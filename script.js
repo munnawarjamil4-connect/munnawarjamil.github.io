@@ -100,12 +100,17 @@ function sendEmail() {
 
 
 document.querySelector(".contact-item a").addEventListener("click", function(e) {
-    e.preventDefault(); // default call open hone se roke
-
     const phoneNumber = this.textContent.trim();
-    navigator.clipboard.writeText(phoneNumber);
 
-    alert("Number copied: " + phoneNumber);
+    navigator.clipboard.writeText(phoneNumber)
+        .then(() => {
+            alert("Number copied: " + phoneNumber);
+        })
+        .catch(err => {
+            console.error("Could not copy number: ", err);
+        });
+
+    // Call automatically open ho jayega because default tel: link
 });
 
 
@@ -122,3 +127,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
