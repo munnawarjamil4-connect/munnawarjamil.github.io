@@ -98,6 +98,17 @@ function sendEmail() {
     window.location.href = mailtoLink;
 }
 
+
+document.querySelector(".contact-item a").addEventListener("click", function(e) {
+    e.preventDefault(); // default call open hone se roke
+
+    const phoneNumber = this.textContent.trim();
+    navigator.clipboard.writeText(phoneNumber);
+
+    alert("Number copied: " + phoneNumber);
+});
+
+
 // Smooth scroll for browsers that don't support CSS scroll-behavior
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
