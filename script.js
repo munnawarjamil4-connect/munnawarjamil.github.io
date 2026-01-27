@@ -81,22 +81,22 @@ projectCards.forEach(card => {
     observer.observe(card);
 });
 
-// Contact form handler
-function sendEmail() {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
+// // Contact form handler
+// function sendEmail() {
+//     const name = document.getElementById('name').value;
+//     const email = document.getElementById('email').value;
+//     const message = document.getElementById('message').value;
     
-    if (!name || !email || !message) {
-        alert('Please fill all fields!');
-        return;
-    }
+//     if (!name || !email || !message) {
+//         alert('Please fill all fields!');
+//         return;
+//     }
     
-    // Create mailto link with form data
-    const mailtoLink = `mailto:munnawarjamil4@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0D%0A%0D%0AFrom: ${encodeURIComponent(email)}`;
+//     // Create mailto link with form data
+//     const mailtoLink = `mailto:munnawarjamil4@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0D%0A%0D%0AFrom: ${encodeURIComponent(email)}`;
     
-    window.location.href = mailtoLink;
-}
+//     window.location.href = mailtoLink;
+// }
 
 
 document.querySelector(".contact-item a").addEventListener("click", function(e) {
@@ -127,4 +127,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
 
