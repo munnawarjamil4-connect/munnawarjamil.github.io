@@ -1062,6 +1062,23 @@ footer {
     }
 }
 
+/* Force form inputs to be clickable */
+#contactFormWrapper,
+#contactFormWrapper * {
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 10;
+}
+
+/* Remove any overlay blocking form */
+.form-overlay,
+.overlay,
+::before,
+::after {
+  pointer-events: none !important;
+}
+
+
 
 
 
