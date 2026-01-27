@@ -578,7 +578,7 @@ body {
     align-items: center;    
 }
 .logo img {
-    width: 50px;
+    width: 80px;
     height: 50px;
     object-fit: cover;
 }
@@ -1011,7 +1011,7 @@ footer {
     }
 
   .logo img {
-    width:50px;
+    width:80px;
   }
     .nav-menu {
         position: fixed;
@@ -1061,6 +1061,7 @@ footer {
         padding: 11px;
     }
 }
+
 
 
 
