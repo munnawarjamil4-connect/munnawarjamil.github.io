@@ -1,458 +1,839 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Munnawar Jamil - WordPress Developer</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Munnawar Jamil — WordPress Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface2: #1a1a1a;
+    --border: #222222;
+    --accent: #7fff6a;
+    --accent2: #3de8c8;
+    --text: #f0f0f0;
+    --muted: #888;
+    --heading: 'Syne', sans-serif;
+    --body: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--heading);
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.875rem; font-weight: 500;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent); color: #0a0a0a;
+    padding: 0.5rem 1.2rem; border-radius: 6px;
+    font-weight: 700; font-size: 0.85rem;
+    text-decoration: none; transition: opacity 0.2s;
+    font-family: var(--heading);
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ─── HERO ─── */
+  #home {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 40%, rgba(127,255,106,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 70%, rgba(61,232,200,0.05) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-inner {
+    position: relative; z-index: 1;
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 380px; gap: 6rem; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(127,255,106,0.1);
+    border: 1px solid rgba(127,255,106,0.3);
+    color: var(--accent); font-size: 0.8rem; font-weight: 600;
+    padding: 0.4rem 1rem; border-radius: 100px;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.5rem; animation: blink 1.5s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+  h1 {
+    font-family: var(--heading);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  h1 .accent { color: var(--accent); }
+  h1 .accent2 { color: var(--accent2); }
+
+  .hero-desc {
+    font-size: 1.1rem; color: var(--muted);
+    max-width: 540px; line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-bottom: 2.5rem;
+  }
+  .stat-item { }
+  .stat-num {
+    font-family: var(--heading);
+    font-size: 2rem; font-weight: 800;
+    color: var(--text); line-height: 1;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #0a0a0a;
+    padding: 0.85rem 2rem; border-radius: 8px;
+    font-weight: 700; font-size: 0.95rem;
+    text-decoration: none; font-family: var(--heading);
+    transition: transform 0.2s, opacity 0.2s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.85rem 2rem; border-radius: 8px;
+    font-weight: 500; font-size: 0.95rem;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-secondary:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  /* Hero photo card */
+  .hero-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px; padding: 2rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-card::before {
+    content: ''; position: absolute; top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(127,255,106,0.15), transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-photo {
+    width: 120px; height: 120px;
+    border-radius: 50%; object-fit: cover;
+    border: 3px solid var(--accent);
+    margin: 0 auto 1rem; display: block;
+  }
+  .hero-photo-placeholder {
+    width: 120px; height: 120px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+    margin: 0 auto 1rem;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--heading); font-size: 2.5rem; font-weight: 800;
+    color: #0a0a0a;
+    border: 3px solid rgba(127,255,106,0.5);
+  }
+  .hero-card-name {
+    font-family: var(--heading); font-size: 1.2rem; font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .hero-card-role { font-size: 0.85rem; color: var(--accent); font-weight: 500; margin-bottom: 1.5rem; }
+  .hero-card-skills { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+  .skill-chip {
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--muted); font-size: 0.75rem; padding: 0.3rem 0.75rem;
+    border-radius: 100px; font-weight: 500;
+  }
+  .skill-chip.hot { border-color: rgba(127,255,106,0.4); color: var(--accent); background: rgba(127,255,106,0.06); }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 6rem 4rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  h2 {
+    font-family: var(--heading); font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800; letter-spacing: -0.02em;
+    margin-bottom: 1rem; line-height: 1.15;
+  }
+  .section-desc { color: var(--muted); font-size: 1rem; max-width: 560px; margin-bottom: 3rem; }
+
+  /* ─── SKILLS ─── */
+  #skills { background: var(--surface); }
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .skill-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.25rem 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .skill-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .skill-name { font-family: var(--heading); font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem; }
+  .skill-level {
+    font-size: 0.75rem; color: var(--accent); font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  .exp-timeline { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid; grid-template-columns: 160px 1fr;
+    gap: 2rem; position: relative;
+    padding-bottom: 2.5rem;
+  }
+  .exp-item:not(:last-child)::after {
+    content: ''; position: absolute;
+    left: 159px; top: 28px; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .exp-date { color: var(--muted); font-size: 0.85rem; font-weight: 500; padding-top: 4px; }
+  .exp-dot {
+    position: absolute; left: 153px; top: 6px;
+    width: 13px; height: 13px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--bg);
+  }
+  .exp-company { font-family: var(--heading); font-weight: 700; font-size: 1rem; color: var(--accent); margin-bottom: 0.2rem; }
+  .exp-role { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.5rem; }
+  .exp-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+  /* ─── PROJECTS ─── */
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .project-img {
+    height: 180px; background: var(--surface2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem; border-bottom: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+  .project-img-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+    font-size: 0.7rem; color: var(--muted); padding: 0.4rem 0.75rem;
+    font-family: var(--heading); font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .project-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+  .project-cat {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent2);
+    margin-bottom: 0.5rem;
+  }
+  .project-title {
+    font-family: var(--heading); font-weight: 700; font-size: 1.1rem;
+    margin-bottom: 0.5rem; color: var(--text);
+  }
+  .project-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; flex: 1; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+  .project-tag {
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--muted); font-size: 0.7rem; padding: 0.2rem 0.6rem;
+    border-radius: 4px; font-weight: 500;
+  }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    color: var(--accent); font-size: 0.85rem; font-weight: 600;
+    text-decoration: none; font-family: var(--heading);
+    transition: gap 0.2s;
+  }
+  .project-link:hover { gap: 0.7rem; }
+
+  /* Category tabs */
+  .cat-tabs { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .cat-tab {
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--muted); font-size: 0.8rem; font-weight: 600;
+    padding: 0.45rem 1.1rem; border-radius: 100px;
+    cursor: pointer; transition: all 0.2s; font-family: var(--heading);
+  }
+  .cat-tab.active, .cat-tab:hover {
+    background: rgba(127,255,106,0.1); border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* more projects */
+  .more-projects {
+    margin-top: 2rem; text-align: center;
+    color: var(--muted); font-size: 0.9rem;
+  }
+  .more-projects strong { color: var(--text); }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--surface); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info h2 { margin-bottom: 0.75rem; }
+  .contact-info p { color: var(--muted); line-height: 1.7; margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1rem 1.25rem;
+    text-decoration: none; color: var(--text);
+    transition: border-color 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); }
+  .contact-link-icon { font-size: 1.2rem; }
+  .contact-link-label { font-size: 0.75rem; color: var(--muted); }
+  .contact-link-val { font-weight: 600; font-size: 0.9rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+  .form-group input, .form-group textarea {
+    background: var(--bg); border: 1px solid var(--border);
+    color: var(--text); padding: 0.85rem 1rem;
+    border-radius: 8px; font-family: var(--body); font-size: 0.9rem;
+    outline: none; transition: border-color 0.2s;
+    resize: vertical;
+  }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
+  .form-submit {
+    background: var(--accent); color: #0a0a0a;
+    border: none; padding: 0.9rem 2rem; border-radius: 8px;
+    font-weight: 700; font-size: 0.95rem; font-family: var(--heading);
+    cursor: pointer; transition: opacity 0.2s, transform 0.2s;
+    align-self: flex-start;
+  }
+  .form-submit:hover { opacity: 0.9; transform: translateY(-2px); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 4rem; text-align: center;
+    color: var(--muted); font-size: 0.85rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0; transform: translateY(20px);
+    animation: fadeIn 0.6s ease forwards;
+  }
+  @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+  .delay-5 { animation-delay: 0.5s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    #home { padding: 7rem 1.5rem 3rem; }
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-card { max-width: 320px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .exp-item::after { display: none; }
+    .exp-dot { display: none; }
+    .exp-date { font-size: 0.8rem; }
+  }
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <div class="logo">  <img src="img/mm.png" alt="Munnawar Jamil">
-                </div>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#skills" class="nav-link">Skills</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </div>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">MJ<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:munnawarjamil4@gmail.com" class="nav-cta">Hire Me →</a>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge fade-in">Available for new projects</div>
+      <h1 class="fade-in delay-1">
+        I Build <span class="accent">WordPress</span><br>
+        Sites That <span class="accent2">Actually</span><br>
+        Drive Results.
+      </h1>
+      <p class="hero-desc fade-in delay-2">
+        30+ live websites delivered for US & UK clients. Custom WordPress themes, WooCommerce stores, Figma-to-web builds — with 3+ years of hands-on experience.
+      </p>
+      <div class="hero-stats fade-in delay-3">
+        <div class="stat-item">
+          <div class="stat-num">30<span>+</span></div>
+          <div class="stat-label">Live Projects</div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="fade-in">Munnawar Jamil</h1>
-                <p class="subtitle fade-in">WordPress Developer | Elementor Expert | WooCommerce Specialist</p>
-                <p class="intro fade-in">I am a WordPress developer with 3+ years of experience in web design and development. I specialize in creating responsive, high-performance websites using Elementor Pro, WooCommerce, and advanced WordPress solutions.</p>
-                <a href="mailto:munnawarjamil4@gmail.com" class="btn-primary fade-in">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                    Hire Me
-                </a>
-            </div>
+        <div class="stat-item">
+          <div class="stat-num">3<span>+</span></div>
+          <div class="stat-label">Years Experience</div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <p>I am a WordPress developer with over 3 years of experience in web design and development. I specialize in creating responsive, adaptive, and high-performance websites using Elementor Pro, WooCommerce, and a wide range of WordPress plugins.</p>
-                
-                <p>I have extensive experience converting Figma and Adobe XD designs into fully functional WordPress sites, ensuring seamless user experiences and visually appealing designs.</p>
-                
-                <p>My expertise includes e-commerce solutions, theme and plugin customization, website optimization, and delivering high-quality, client-focused results.</p>
-                
-                <p>In addition, I have experience as a GoHighLevel Associate (Remote) at CarpeDiem, managing CRM automation and client campaigns, enhancing my skills in remote collaboration and SaaS tools.</p>
-            </div>
+        <div class="stat-item">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Niches Covered</div>
         </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Skills & Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-card">WordPress</div>
-                <div class="skill-card">Elementor Pro</div>
-                <div class="skill-card">WooCommerce</div>
-                <div class="skill-card">Figma to WordPress</div>
-                <div class="skill-card">Adobe XD to WordPress</div>
-                <div class="skill-card">Theme Customization</div>
-                <div class="skill-card">Plugin Customization</div>
-                <div class="skill-card">Website Optimization</div>
-                <div class="skill-card">GoHighLevel</div>
-                <div class="skill-card">CRM Automation</div>
-            </div>
+      </div>
+      <div class="hero-actions fade-in delay-4">
+        <a href="#projects" class="btn-primary">View My Work →</a>
+        <a href="#contact" class="btn-secondary">Get In Touch</a>
+      </div>
+    </div>
+    <div class="fade-in delay-3">
+      <div class="hero-card">
+        <div class="hero-photo-placeholder">MJ</div>
+        <div class="hero-card-name">Munnawar Jamil</div>
+        <div class="hero-card-role">WordPress Developer</div>
+        <div class="hero-card-skills">
+          <span class="skill-chip hot">WordPress</span>
+          <span class="skill-chip hot">WooCommerce</span>
+          <span class="skill-chip hot">Elementor Pro</span>
+          <span class="skill-chip">Figma → WP</span>
+          <span class="skill-chip">GoHighLevel</span>
+          <span class="skill-chip">CRM Automation</span>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            
-            <div class="project-category">
-                <h3>E-commerce & Retail</h3>
-                <div class="projects-grid">
-                    <a href="https://yoursmartstores.com" target="_blank" class="project-card">
-                        <span>yoursmartstores.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">What I Work With</div>
+    <h2>Skills & Expertise</h2>
+    <p class="section-desc">Full-stack WordPress development — from pixel-perfect design conversion to performance optimization and automation.</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🔷</div>
+        <div class="skill-name">WordPress</div>
+        <div class="skill-level">Expert · 3+ Years</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🛒</div>
+        <div class="skill-name">WooCommerce</div>
+        <div class="skill-level">Expert · E-commerce Builds</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚡</div>
+        <div class="skill-name">Elementor Pro</div>
+        <div class="skill-level">Expert · Custom Layouts</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🎨</div>
+        <div class="skill-name">Figma → WordPress</div>
+        <div class="skill-level">Advanced · Pixel-Perfect</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🎨</div>
+        <div class="skill-name">Adobe XD → WordPress</div>
+        <div class="skill-level">Advanced · Design Systems</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔌</div>
+        <div class="skill-name">Plugin Customization</div>
+        <div class="skill-level">Advanced · Custom Hooks</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🎨</div>
+        <div class="skill-name">Theme Development</div>
+        <div class="skill-level">Advanced · Child Themes</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🚀</div>
+        <div class="skill-name">Performance Optimization</div>
+        <div class="skill-level">Advanced · Speed & SEO</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <div class="skill-name">GoHighLevel</div>
+        <div class="skill-level">Proficient · CRM & Funnels</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🤖</div>
+        <div class="skill-name">CRM Automation</div>
+        <div class="skill-level">Proficient · Client Campaigns</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      </a>
-                    <a href="https://queenslinen.com" target="_blank" class="project-card">
-                        <span>queenslinen.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://hrsretail.com" target="_blank" class="project-card">
-                        <span>hrsretail.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://eutopiatrend.com" target="_blank" class="project-card">
-                        <span>eutopiatrend.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://mjautosolution.com" target="_blank" class="project-card">
-                        <span>mjautosolution.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-category">
-                <h3>Corporate & Agencies</h3>
-                <div class="projects-grid">
-                    <a href="https://tagthealphagroup.com" target="_blank" class="project-card">
-                        <span>tagthealphagroup.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://vertezventures.com" target="_blank" class="project-card">
-                        <span>vertezventures.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://digihive.com.pk" target="_blank" class="project-card">
-                        <span>digihive.com.pk</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://theteclu.com" target="_blank" class="project-card">
-                        <span>theteclu.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://pulsebitpk.com" target="_blank" class="project-card">
-                        <span>pulsebitpk.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://corporateecomsolutions.com" target="_blank" class="project-card">
-                        <span>corporateecomsolutions.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-category">
-                <h3>Publishing & Media</h3>
-                <div class="projects-grid">
-                    <a href="https://mcmillanbookwriting.com" target="_blank" class="project-card">
-                        <span>mcmillanbookwriting.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://usbookpublishers.com" target="_blank" class="project-card">
-                        <span>usbookpublishers.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://bridgepublisher.com" target="_blank" class="project-card">
-                        <span>bridgepublisher.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://tagalphalabs.com" target="_blank" class="project-card">
-                        <span>tagalphalabs.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://authorsbylinepublishing.com" target="_blank" class="project-card">
-                        <span>authorsbylinepublishing.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://titanpublishers.com" target="_blank" class="project-card">
-                        <span>titanpublishers.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://statespublishers.com" target="_blank" class="project-card">
-                        <span>statespublishers.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-category">
-                <h3>Service & Other</h3>
-                <div class="projects-grid">
-                    <a href="https://assistingseller.com" target="_blank" class="project-card">
-                        <span>assistingseller.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://rodtravelandtours.pk" target="_blank" class="project-card">
-                        <span>rodtravelandtours.pk</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://aghazesafarfoundation.com" target="_blank" class="project-card">
-                        <span>aghazesafarfoundation.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://drewhamiltonenterprises.com" target="_blank" class="project-card">
-                        <span>drewhamiltonenterprises.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://thedirectmart.shop" target="_blank" class="project-card">
-                        <span>thedirectmart.shop</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://leatonin.com" target="_blank" class="project-card">
-                        <span>leatonin.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://britishassignmentwriting.com" target="_blank" class="project-card">
-                        <span>britishassignmentwriting.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://littlestuff.pk" target="_blank" class="project-card">
-                        <span>littlestuff.pk</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://danielamcmahon.com" target="_blank" class="project-card">
-                        <span>danielamcmahon.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://michelshehadeh.com" target="_blank" class="project-card">
-                        <span>michelshehadeh.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://completemedical.pk" target="_blank" class="project-card">
-                        <span>completemedical.pk</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://theecomsmers.com" target="_blank" class="project-card">
-                        <span>theecomsmers.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://sellermerce.com" target="_blank" class="project-card">
-                        <span>sellermerce.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://makingamericachivalrousagain.com" target="_blank" class="project-card">
-                        <span>makingamericachivalrousagain.com</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-
-                        </a>
-                </div>
-            </div>
+<!-- EXPERIENCE -->
+<section id="experience" style="background: var(--bg);">
+  <div class="section-inner">
+    <div class="section-label">Work History</div>
+    <h2>Experience</h2>
+    <p class="section-desc">Professional experience building real products for real clients, across agencies and remote roles.</p>
+    <div class="exp-timeline">
+      <div class="exp-item">
+        <div class="exp-date">2023 – Present</div>
+        <div class="exp-dot"></div>
+        <div class="exp-content">
+          <div class="exp-company">CarpeDiem</div>
+          <div class="exp-role">GoHighLevel Associate (Remote)</div>
+          <div class="exp-desc">Managed CRM automation and client campaigns using GoHighLevel. Built and optimized funnels, automated follow-up workflows, and supported remote client onboarding. Enhanced skills in SaaS tools and async remote collaboration.</div>
         </div>
-    </section>
-
-                         <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-wrapper">
-                <div class="contact-email">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                    <a href="mailto:munnawarjamil4@gmail.com">munnawarjamil4@gmail.com</a>
-                </div>
-                
-                <div class="contact-item">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
-                        <a href="tel:+923118963122">+92 311 8963122</a>
-                    </div>
-                    </div>
-               <!-- <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST" id="contactFormWrapper">
-
-  <div class="form-group">
-    <label>Name</label>
-    <input type="text" name="name" placeholder="Your Name" required>
-  </div>
-
-  <div class="form-group">
-    <label>Email</label>
-    <input type="email" name="email" placeholder="your.email@example.com" required>
-  </div>
-
-  <div class="form-group">
-    <label>Message</label>
-    <textarea name="message" rows="5" placeholder="Your message here..." required></textarea>
-  </div>
-
-  <button type="submit" class="btn-submit">Send Message</button>
-
-</form> -->
-
-           <form action="https://formsubmit.co/munnawarjamil4@gmail.com" method="POST">
-
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" placeholder="Your Name" required>
-  </div>
-
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" placeholder="your.email@example.com" required>
-  </div>
-
-  <div class="form-group">
-    <label for="message">Message</label>
-    <textarea name="message" id="message" rows="5" placeholder="Your message here..." required></textarea>
-  </div>
-
-  <!-- Optional: disable captcha -->
-  <input type="hidden" name="_captcha" value="false">
-
-  <button type="submit" class="btn-submit">Send Message</button>
-</form>
-
-
-
-            </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">2021 – Present</div>
+        <div class="exp-dot"></div>
+        <div class="exp-content">
+          <div class="exp-company">Freelance</div>
+          <div class="exp-role">WordPress Developer</div>
+          <div class="exp-desc">Delivered 30+ WordPress websites across e-commerce, corporate, publishing, and service industries. Specialized in WooCommerce builds, Figma/Adobe XD to WordPress conversions, Elementor Pro custom layouts, and website performance optimization for UK & US-based clients.</div>
         </div>
-    </section>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">2021 – 2022</div>
+        <div class="exp-dot"></div>
+        <div class="exp-content">
+          <div class="exp-company">DigiHive</div>
+          <div class="exp-role">WordPress Developer</div>
+          <div class="exp-desc">Built and maintained client websites at a digital agency. Worked with custom themes, plugin integrations, and responsive design implementations. Collaborated with design and marketing teams to deliver client projects on deadline.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 Munnawar Jamil — WordPress Developer</p>
-    </footer>
+<!-- PROJECTS -->
+<section id="projects" style="background: var(--surface);">
+  <div class="section-inner">
+    <div class="section-label">Portfolio</div>
+    <h2>Featured Projects</h2>
+    <p class="section-desc">Live websites I've built — real clients, real results. Each project tailored to the client's business goals.</p>
 
-    <script src="script.js"></script>
+    <div class="cat-tabs">
+      <div class="cat-tab active">All</div>
+      <div class="cat-tab">E-commerce</div>
+      <div class="cat-tab">Corporate</div>
+      <div class="cat-tab">Publishing</div>
+      <div class="cat-tab">Services</div>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- E-commerce -->
+      <div class="project-card">
+        <div class="project-img">🛍️
+          <div class="project-img-label">E-commerce</div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">WooCommerce Store</div>
+          <div class="project-title">Your Smart Stores</div>
+          <div class="project-desc">Full WooCommerce store with product catalog, cart, and checkout. Custom theme built for conversion — fast loading and mobile-first.</div>
+          <div class="project-tags">
+            <span class="project-tag">WooCommerce</span>
+            <span class="project-tag">Elementor Pro</span>
+            <span class="project-tag">Custom Theme</span>
+          </div>
+          <a href="https://yoursmartstores.com" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img">🏠
+          <div class="project-img-label">E-commerce</div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">WooCommerce Store</div>
+          <div class="project-title">Queens Linen</div>
+          <div class="project-desc">Bedding & linen brand store built on WooCommerce. Product variants, custom page layouts, and optimized for UK market.</div>
+          <div class="project-tags">
+            <span class="project-tag">WooCommerce</span>
+            <span class="project-tag">WordPress</span>
+            <span class="project-tag">UK Client</span>
+          </div>
+          <a href="https://queenslinen.com" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img">🚗
+          <div class="project-img-label">E-commerce</div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">WooCommerce Store</div>
+          <div class="project-title">MJ Auto Solution</div>
+          <div class="project-desc">Automotive parts and services website. Product listings with custom filters, vehicle compatibility, and service booking integration.</div>
+          <div class="project-tags">
+            <span class="project-tag">WooCommerce</span>
+            <span class="project-tag">Custom Plugins</span>
+            <span class="project-tag">Performance</span>
+          </div>
+          <a href="https://mjautosolution.com" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <!-- Corporate -->
+      <div class="project-card">
+        <div class="project-img">🏢
+          <div class="project-img-label">Corporate</div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">Corporate / Agency</div>
+          <div class="project-title">DigiHive</div>
+          <div class="project-desc">Full digital agency website with services pages, portfolio showcase, and lead capture. Built with Elementor Pro and custom WordPress theme.</div>
+          <div class="project-tags">
+            <span class="project-tag">Elementor Pro</span>
+            <span class="project-tag">Custom Theme</span>
+            <span class="project-tag">Agency Site</span>
+          </div>
+          <a href="https://digihive.com.pk" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img">💼
+          <div class="project-img-label">Corporate</div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">Corporate / Ventures</div>
+          <div class="project-title">Vertez Ventures</div>
+          <div class="project-desc">Corporate website for a ventures firm. Clean professional design with service sections, team pages, and contact forms.</div>
+          <div class="project-tags">
+            <span class="project-tag">WordPress</span>
+            <span class="project-tag">Figma → WP</span>
+            <span class="project-tag">Corporate</span>
+          </div>
+          <a href="https://vertezventures.com" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <!-- Publishing -->
+      <div class="project-card">
+        <div class="project-img">📚
+          <div class="project-img-label">Publishing</div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">Publishing / US Client</div>
+          <div class="project-title">McMillan Book Writing</div>
+          <div class="project-desc">Book writing & publishing services website for US-based client. Custom landing pages, service packages, and inquiry funnels built to convert.</div>
+          <div class="project-tags">
+            <span class="project-tag">WordPress</span>
+            <span class="project-tag">US Client</span>
+            <span class="project-tag">Lead Gen</span>
+          </div>
+          <a href="https://mcmillanbookwriting.com" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="project-card">
+        <div class="project-img">✈️
+          <div class="project-img-label">Services</div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">Travel & Tours</div>
+          <div class="project-title">ROD Travel & Tours</div>
+          <div class="project-desc">Travel agency website with tour packages, booking forms, and destination galleries. Fully responsive with custom Elementor layouts.</div>
+          <div class="project-tags">
+            <span class="project-tag">WordPress</span>
+            <span class="project-tag">Elementor Pro</span>
+            <span class="project-tag">Booking Forms</span>
+          </div>
+          <a href="https://rodtravelandtours.pk" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img">🏥
+          <div class="project-img-label">Services</div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">Medical / Healthcare</div>
+          <div class="project-title">Complete Medical PK</div>
+          <div class="project-desc">Healthcare services website with doctor profiles, service pages, and appointment booking integration.</div>
+          <div class="project-tags">
+            <span class="project-tag">WordPress</span>
+            <span class="project-tag">Custom Theme</span>
+            <span class="project-tag">Healthcare</span>
+          </div>
+          <a href="https://completemedical.pk" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img">📝
+          <div class="project-img-label">Services</div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">Academic / UK Client</div>
+          <div class="project-title">British Assignment Writing</div>
+          <div class="project-desc">Academic writing services platform for UK-based client. Service pages, order flow, and conversion-optimized landing pages.</div>
+          <div class="project-tags">
+            <span class="project-tag">WordPress</span>
+            <span class="project-tag">UK Client</span>
+            <span class="project-tag">Conversion</span>
+          </div>
+          <a href="https://britishassignmentwriting.com" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="more-projects">
+      Showing 9 of <strong>30+ projects</strong> — more available on request.
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-label">Let's Work Together</div>
+        <h2>Got a Project in Mind?</h2>
+        <p>Whether you need a WooCommerce store, a custom WordPress site from Figma designs, or performance optimization — let's talk. I'm available for freelance projects and full-time roles.</p>
+        <div class="contact-links">
+          <a href="mailto:munnawarjamil4@gmail.com" class="contact-link">
+            <span class="contact-link-icon">📧</span>
+            <div>
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-val">munnawarjamil4@gmail.com</div>
+            </div>
+          </a>
+          <a href="tel:+923118963122" class="contact-link">
+            <span class="contact-link-icon">📞</span>
+            <div>
+              <div class="contact-link-label">Phone / WhatsApp</div>
+              <div class="contact-link-val">+92 311 896 3122</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="John Smith" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="john@example.com" required>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea rows="5" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Munnawar Jamil — Built with care. 
+  <a href="mailto:munnawarjamil4@gmail.com">munnawarjamil4@gmail.com</a></p>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✓ Message Sent!';
+    btn.style.background = 'var(--accent2)';
+    setTimeout(() => {
+      btn.textContent = 'Send Message →';
+      btn.style.background = 'var(--accent)';
+      e.target.reset();
+    }, 3000);
+  }
+
+  // Category tabs filter (visual only)
+  document.querySelectorAll('.cat-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.skill-card, .project-card, .exp-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
 </body>
-</html> 
-
-
-
-
-
-
+</html>
