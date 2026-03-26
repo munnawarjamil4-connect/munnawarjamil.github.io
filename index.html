@@ -44,15 +44,35 @@
   .nav-logo {
     text-decoration: none;
     display: flex; align-items: center;
+    gap: 1px;
   }
-  .nav-logo img {
-    height: 46px; width: auto;
-    filter: brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(60deg) brightness(1.3);
-    transition: filter 0.3s, opacity 0.3s;
+  .logo-m {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: var(--accent);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(127,255,106,0.4);
   }
-  .nav-logo img:hover {
-    opacity: 0.8;
+  .logo-j {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: var(--text);
+    letter-spacing: -0.04em;
+    line-height: 1;
   }
+  .logo-dot {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-left: 1px;
+  }
+  .nav-logo:hover .logo-m,
+  .nav-logo:hover .logo-dot { text-shadow: 0 0 30px rgba(127,255,106,0.7); }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
     color: var(--muted); text-decoration: none;
@@ -404,7 +424,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#home" class="nav-logo"><img src="data:image/png;base64,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" alt="Munnawar Jamil Logo"></a>
+  <a href="#home" class="nav-logo"><span class="logo-m">M</span><span class="logo-j">J</span><span class="logo-dot">.</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -412,7 +432,7 @@
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="/cdn-cgi/l/email-protection#1f726a71717e687e6d757e7276732b5f78727e7673317c7072" class="nav-cta">Hire Me →</a>
+  <a href="https://mail.google.com/mail/?view=cm&to=munnawarjamil4@gmail.com" target="_blank" class="nav-cta">Hire Me →</a>
 </nav>
 
 <!-- HERO -->
@@ -832,7 +852,7 @@
         <h2>Got a Project in Mind?</h2>
         <p>Whether you need a WooCommerce store, a custom WordPress site from Figma designs, or performance optimization — let's talk. I'm available for freelance projects and full-time roles.</p>
         <div class="contact-links">
-          <a href="/cdn-cgi/l/email-protection#fe938b90909f899f8c949f939792cabe99939f9792d09d9193" class="contact-link">
+          <a href="https://mail.google.com/mail/?view=cm&to=munnawarjamil4@gmail.com" target="_blank" class="contact-link">
             <span class="contact-link-icon">📧</span>
             <div>
               <div class="contact-link-label">Email</div>
@@ -854,7 +874,7 @@
             Reach out directly — I typically respond within 24 hours. Available for freelance projects, full-time roles, and consultations.
           </p>
           <div style="display:flex;flex-direction:column;gap:1rem;">
-            <a href="/cdn-cgi/l/email-protection#59342c3737382e382b33383430356d193e34383035773a3634" style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+            <a href="https://mail.google.com/mail/?view=cm&to=munnawarjamil4@gmail.com" target="_blank" style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
               <span style="font-size:1.4rem;">📧</span>
               <div>
                 <div style="font-size:0.72rem;color:var(--muted);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.2rem;">Email</div>
@@ -884,10 +904,10 @@
 
 <footer>
   <p>© 2026 Munnawar Jamil — Built with care. 
-  <a href="/cdn-cgi/l/email-protection#dbb6aeb5b5baacbaa9b1bab6b2b7ef9bbcb6bab2b7f5b8b4b6"><span class="__cf_email__" data-cfemail="cca1b9a2a2adbbadbea6ada1a5a0f88caba1ada5a0e2afa3a1">[email&#160;protected]</span></a></p>
+  <a href="https://mail.google.com/mail/?view=cm&to=munnawarjamil4@gmail.com" target="_blank"><span class="__cf_email__" data-cfemail="cca1b9a2a2adbbadbea6ada1a5a0f88caba1ada5a0e2afa3a1">[email&#160;protected]</span></a></p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 
 
   // Category tabs filter (visual only)
