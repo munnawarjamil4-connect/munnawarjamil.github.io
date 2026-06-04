@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -423,7 +423,7 @@
 <body>
 
 <!-- NAV -->
-<nav>
+<!-- <nav>
   <a href="#home" class="nav-logo"><span class="logo-m">M</span><span class="logo-j">J</span><span class="logo-dot">.</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -436,7 +436,7 @@
 </nav>
 
 <!-- HERO -->
-<section id="home">
+<!-- <section id="home">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-inner">
@@ -488,7 +488,7 @@
 </section>
 
 <!-- SKILLS -->
-<section id="skills">
+<!-- <section id="skills">
   <div class="section-inner">
     <div class="section-label">What I Work With</div>
     <h2>Skills & Expertise</h2>
@@ -546,10 +546,10 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- EXPERIENCE -->
-<section id="experience" style="background: var(--bg);">
+<!-- <section id="experience" style="background: var(--bg);">
   <div class="section-inner">
     <div class="section-label">Work History</div>
     <h2>Experience</h2>
@@ -593,10 +593,10 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- PROJECTS -->
-<section id="projects" style="background: var(--surface);">
+<!-- <section id="projects" style="background: var(--surface);">
   <div class="section-inner">
     <div class="section-label">Portfolio</div>
     <h2>Featured Projects</h2>
@@ -608,10 +608,10 @@
       <div class="cat-tab">Corporate</div>
       <div class="cat-tab">Publishing</div>
       <div class="cat-tab">Services</div>
-    </div>
+    </div> -->
 
     <!-- FEATURED 3 -->
-    <div style="margin-bottom:2rem;">
+    <!-- <div style="margin-bottom:2rem;">
       <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;">
         <span style="background:rgba(127,255,106,0.12);border:1px solid rgba(127,255,106,0.35);color:var(--accent);font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.35rem 0.9rem;border-radius:100px;">★ Featured Work</span>
         <span style="color:var(--muted);font-size:0.82rem;">Highlighted projects from my portfolio</span>
@@ -679,7 +679,7 @@
     <div class="projects-grid">
 
       <!-- E-commerce -->
-      <div class="project-card">
+      <!-- <div class="project-card">
         <div class="project-img">🛍️
           <div class="project-img-label">E-commerce</div>
         </div>
@@ -731,7 +731,7 @@
       </div>
 
       <!-- Corporate -->
-      <div class="project-card">
+      <!-- <div class="project-card">
         <div class="project-img">🏢
           <div class="project-img-label">Corporate</div>
         </div>
@@ -763,10 +763,10 @@
           </div>
           <a href="https://vertezventures.com" target="_blank" class="project-link">View Live Site →</a>
         </div>
-      </div>
+      </div> -->
 
       <!-- Publishing -->
-      <div class="project-card">
+      <!-- <div class="project-card">
         <div class="project-img">📚
           <div class="project-img-label">Publishing</div>
         </div>
@@ -781,10 +781,10 @@
           </div>
           <a href="https://mcmillanbookwriting.com" target="_blank" class="project-link">View Live Site →</a>
         </div>
-      </div>
+      </div> -->
 
       <!-- Services -->
-      <div class="project-card">
+      <!-- <div class="project-card">
         <div class="project-img">✈️
           <div class="project-img-label">Services</div>
         </div>
@@ -841,10 +841,10 @@
       Showing 9 of <strong>30+ projects</strong> — more available on request.
     </div>
   </div>
-</section>
+</section>  -->
 
 <!-- CONTACT -->
-<section id="contact">
+<!-- <section id="contact">
   <div class="section-inner">
     <div class="contact-grid">
       <div class="contact-info">
@@ -913,4 +913,741 @@
   // Category tabs filter (visual only)
   document.querySelectorAll('.cat-tab').forEach(tab => {
     tab.addEventListener('click', () => {
-      documen
+      documen -->
+
+
+<!--  NEW  portfolio -->
+
+bash
+
+cat > /mnt/user-data/outputs/munnawar_portfolio.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Munnawar Jamil — WordPress Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080808;
+    --surface: #0f0f0f;
+    --surface2: #181818;
+    --border: #1e1e1e;
+    --accent: #7fff6a;
+    --accent2: #3de8c8;
+    --accent3: #ffcc44;
+    --text: #f0f0f0;
+    --muted: #777;
+    --heading: 'Syne', sans-serif;
+    --body: 'DM Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 4rem;
+    background: rgba(8,8,8,0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { text-decoration: none; display: flex; align-items: center; gap: 1px; }
+  .logo-m { font-family: var(--heading); font-weight: 800; font-size: 1.6rem; color: var(--accent); letter-spacing: -0.04em; line-height: 1; text-shadow: 0 0 20px rgba(127,255,106,0.4); }
+  .logo-j { font-family: var(--heading); font-weight: 800; font-size: 1.6rem; color: var(--text); letter-spacing: -0.04em; line-height: 1; }
+  .logo-dot { font-family: var(--heading); font-weight: 800; font-size: 1.8rem; color: var(--accent); line-height: 1; margin-left: 1px; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta { background: var(--accent); color: #080808; padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem; text-decoration: none; transition: opacity 0.2s, transform 0.2s; font-family: var(--heading); }
+  .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  /* ─── HERO ─── */
+  #home {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 55% at 70% 40%, rgba(127,255,106,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 15% 75%, rgba(61,232,200,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 30% 30% at 85% 80%, rgba(255,204,68,0.03) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .hero-inner {
+    position: relative; z-index: 1;
+    max-width: 1140px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 360px; gap: 5rem; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(127,255,106,0.08); border: 1px solid rgba(127,255,106,0.28);
+    color: var(--accent); font-size: 0.78rem; font-weight: 700;
+    padding: 0.4rem 1rem; border-radius: 100px;
+    letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.5rem; animation: blink 1.5s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+  h1 { font-family: var(--heading); font-size: clamp(2.6rem, 5vw, 4.2rem); font-weight: 800; line-height: 1.04; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+  h1 .accent { color: var(--accent); }
+  h1 .accent2 { color: var(--accent2); }
+  .hero-desc { font-size: 1.05rem; color: var(--muted); max-width: 520px; line-height: 1.75; margin-bottom: 2.5rem; }
+  .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; }
+  .stat-num { font-family: var(--heading); font-size: 2.1rem; font-weight: 800; color: var(--text); line-height: 1; }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem; letter-spacing: 0.03em; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: var(--accent); color: #080808; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; font-family: var(--heading); transition: transform 0.2s, opacity 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; }
+  .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
+  .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--text); padding: 0.85rem 2rem; border-radius: 8px; font-weight: 500; font-size: 0.95rem; text-decoration: none; transition: border-color 0.2s, transform 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; }
+  .btn-secondary:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  /* Hero card */
+  .hero-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; text-align: center; position: relative; overflow: hidden; }
+  .hero-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(127,255,106,0.14), transparent 70%); border-radius: 50%; }
+  .hero-photo { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); margin: 0 auto 1rem; display: block; box-shadow: 0 0 30px rgba(127,255,106,0.2); }
+  .hero-card-name { font-family: var(--heading); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .hero-card-role { font-size: 0.82rem; color: var(--accent); font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 0.04em; }
+  .hero-card-skills { display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center; }
+  .skill-chip { background: var(--surface2); border: 1px solid var(--border); color: var(--muted); font-size: 0.73rem; padding: 0.28rem 0.7rem; border-radius: 100px; font-weight: 500; }
+  .skill-chip.hot { border-color: rgba(127,255,106,0.4); color: var(--accent); background: rgba(127,255,106,0.06); }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 6rem 4rem; }
+  .section-inner { max-width: 1140px; margin: 0 auto; }
+  .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem; }
+  h2 { font-family: var(--heading); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.85rem; line-height: 1.12; }
+  .section-desc { color: var(--muted); font-size: 1rem; max-width: 560px; margin-bottom: 3rem; line-height: 1.7; }
+
+  /* ─── SKILLS ─── */
+  #skills { background: var(--surface); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 1rem; }
+  .skill-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.4rem; transition: border-color 0.2s, transform 0.2s; }
+  .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .skill-icon { font-size: 1.4rem; margin-bottom: 0.7rem; }
+  .skill-name { font-family: var(--heading); font-weight: 700; font-size: 0.92rem; margin-bottom: 0.2rem; }
+  .skill-level { font-size: 0.72rem; color: var(--accent); font-weight: 600; letter-spacing: 0.04em; }
+
+  /* ─── EXPERIENCE ─── */
+  .exp-timeline { display: flex; flex-direction: column; gap: 0; }
+  .exp-item { display: grid; grid-template-columns: 160px 1fr; gap: 2rem; position: relative; padding-bottom: 2.5rem; }
+  .exp-item:not(:last-child)::after { content: ''; position: absolute; left: 159px; top: 28px; bottom: 0; width: 1px; background: var(--border); }
+  .exp-date { color: var(--muted); font-size: 0.82rem; font-weight: 500; padding-top: 4px; }
+  .exp-dot { position: absolute; left: 153px; top: 6px; width: 13px; height: 13px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); box-shadow: 0 0 10px rgba(127,255,106,0.4); }
+  .exp-company { font-family: var(--heading); font-weight: 700; font-size: 0.95rem; color: var(--accent); margin-bottom: 0.2rem; }
+  .exp-role { font-weight: 600; font-size: 1.02rem; margin-bottom: 0.5rem; }
+  .exp-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.65; }
+
+  /* ─── PROJECTS ─── */
+  .cat-tabs { display: flex; gap: 0.65rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .cat-tab { background: var(--surface); border: 1px solid var(--border); color: var(--muted); font-size: 0.78rem; font-weight: 700; padding: 0.42rem 1rem; border-radius: 100px; cursor: pointer; transition: all 0.2s; font-family: var(--heading); letter-spacing: 0.04em; }
+  .cat-tab.active, .cat-tab:hover { background: rgba(127,255,106,0.1); border-color: var(--accent); color: var(--accent); }
+
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+  .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.22s, transform 0.22s; display: flex; flex-direction: column; }
+  .project-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+  .project-img { height: 160px; background: var(--surface2); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .project-img-label { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); font-size: 0.68rem; color: var(--muted); padding: 0.35rem 0.75rem; font-family: var(--heading); font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; }
+  .project-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+  .project-cat { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.45rem; }
+  .project-title { font-family: var(--heading); font-weight: 700; font-size: 1.05rem; margin-bottom: 0.45rem; color: var(--text); }
+  .project-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.9rem; flex: 1; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.9rem; }
+  .project-tag { background: var(--surface2); border: 1px solid var(--border); color: var(--muted); font-size: 0.68rem; padding: 0.18rem 0.55rem; border-radius: 4px; font-weight: 500; }
+  .project-link { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); font-size: 0.82rem; font-weight: 700; text-decoration: none; font-family: var(--heading); transition: gap 0.2s, opacity 0.2s; letter-spacing: 0.03em; }
+  .project-link:hover { gap: 0.65rem; opacity: 0.85; }
+
+  .featured-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+  .featured-badge { display: inline-flex; align-items: center; gap: 0.6rem; margin-bottom: 1.25rem; }
+  .featured-label { background: rgba(127,255,106,0.1); border: 1px solid rgba(127,255,106,0.3); color: var(--accent); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.32rem 0.85rem; border-radius: 100px; }
+  .featured-sub { color: var(--muted); font-size: 0.8rem; }
+
+  .more-projects { margin-top: 2.5rem; text-align: center; color: var(--muted); font-size: 0.88rem; padding: 1.25rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; }
+  .more-projects strong { color: var(--text); }
+
+  /* Stats band */
+  .stats-band { background: var(--surface2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2rem 4rem; }
+  .stats-band-inner { max-width: 1140px; margin: 0 auto; display: flex; gap: 0; justify-content: space-around; flex-wrap: wrap; }
+  .band-stat { text-align: center; padding: 0 2rem; }
+  .band-stat-num { font-family: var(--heading); font-size: 2.4rem; font-weight: 800; color: var(--accent); line-height: 1; }
+  .band-stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--surface); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info p { color: var(--muted); line-height: 1.75; margin-bottom: 2rem; font-size: 0.95rem; }
+  .contact-card { background: var(--bg); border: 1px solid rgba(127,255,106,0.18); border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link { display: flex; align-items: center; gap: 1rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 1.05rem 1.2rem; text-decoration: none; color: var(--text); transition: border-color 0.2s, transform 0.2s; }
+  .contact-link:hover { border-color: var(--accent); transform: translateX(4px); }
+  .contact-link-icon { font-size: 1.3rem; flex-shrink: 0; }
+  .contact-link-label { font-size: 0.7rem; color: var(--muted); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; }
+  .contact-link-val { font-weight: 600; font-size: 0.9rem; color: var(--accent); }
+  .contact-note { color: var(--muted); font-size: 0.82rem; line-height: 1.65; border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 0.25rem; }
+
+  /* ─── FOOTER ─── */
+  footer { border-top: 1px solid var(--border); padding: 2rem 4rem; text-align: center; color: var(--muted); font-size: 0.83rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+  .footer-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in { opacity: 0; transform: translateY(22px); animation: fadeIn 0.65s ease forwards; }
+  @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+  .delay-5 { animation-delay: 0.5s; }
+
+  /* gradient variants for project cards */
+  .grad-green { background: linear-gradient(135deg, #0a160a, #172616); }
+  .grad-teal  { background: linear-gradient(135deg, #071414, #0d2424); }
+  .grad-gold  { background: linear-gradient(135deg, #161206, #251e08); }
+  .grad-blue  { background: linear-gradient(135deg, #07091a, #0d1228); }
+  .grad-rose  { background: linear-gradient(135deg, #160a0a, #251213); }
+  .grad-slate { background: linear-gradient(135deg, #0d0d10, #16161e); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 960px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    #home { padding: 7rem 1.5rem 3rem; }
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-card { max-width: 320px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .exp-item::after, .exp-dot { display: none; }
+    .stats-band { padding: 2rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; }
+    .footer-inner { justify-content: center; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo"><span class="logo-m">M</span><span class="logo-j">J</span><span class="logo-dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://mail.google.com/mail/?view=cm&to=munnawarjamil4@gmail.com" target="_blank" class="nav-cta">Hire Me →</a>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge fade-in">Available for new projects</div>
+      <h1 class="fade-in delay-1">
+        I Build <span class="accent">WordPress</span><br>
+        Sites That <span class="accent2">Actually</span><br>
+        Drive Results.
+      </h1>
+      <p class="hero-desc fade-in delay-2">
+        30+ live websites delivered for US & UK clients. Custom WordPress themes, WooCommerce stores, Figma-to-web builds — with 3+ years of hands-on experience.
+      </p>
+      <div class="hero-stats fade-in delay-3">
+        <div class="stat-item">
+          <div class="stat-num">30<span>+</span></div>
+          <div class="stat-label">Live Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3<span>+</span></div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Companies</div>
+        </div>
+      </div>
+      <div class="hero-actions fade-in delay-4">
+        <a href="#projects" class="btn-primary">View My Work →</a>
+        <a href="#contact" class="btn-secondary">Get In Touch</a>
+      </div>
+    </div>
+    <div class="fade-in delay-3">
+      <div class="hero-card">
+        <img src="data:image/jpeg;base64,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SI/p/Megsupr6aR4ZZIQQiEruopa7rZSSblSYSSJJISSLJASSBggYISCEgiyuxFz3JbKtGmpbZTdIhUNMDIBIIhWgZAlIUUW4NYsp0kz4ujmKNOWJvOKw05365xR38EqU26c9ORX3OfrGS/HtrTi6FGd4X2m86OxVsstaEkMSSQEkIDCQwkkJJCSQkgCJCSQkkIIFMACAAxVV1Raa3PozQlkjLqz3kiRpooCrKLCAxYNFYxDoYdYiBFsAJSmxUxDUChrBJ19Hn+wcurbyWulVj3JyNeS2ug+Wybvsotjdppu3hiDMmCEkhJIESBghJISSEkhIIGAKYAMAAhVHFa1alQHUVwSltll3FXOu7OTct+jDtiAhqAwRiCLAAEJJCTK1OowDgYsqGVl0paRksUq1ZdSU01bCl7IcC6m+tztYtWq+1CwNjQSQyQMEDASCQhEUwQkkJBAgQgEohVCgQYKIZUqS4VVl8xsbKFy1rXp2Z353L65TldQrAIjTLCBXggJFhQYAJnettRpHlqZiAwqshRCxMb6omG+y+zJdpc83q7JsovkIQQwEMkkMEDBAwAaIFsCwaADBYMABgq0yqg6IQ11qjJRRJoqUDKrjW50LMi3NemIOehIiRHApCq0QDAkUqowhFWxUyMzakZTLYscrMQsFaJqlNpAJrk+jLpaMBaBkDJEhECVIYAMFA4rQtlbDGEklZYtULIilgqUtWpUtWkj105DXnpUsWkQxEHCWivq5qrry9Be2yPnRIJK3rFDxUeIOkKBkiukqQgFLGIUysVYsQFNgsWypbm9c5S5swvPdqx7GiVmehglNFA8rg4StLkpBYFsRbGdVaAZasRqTFYzrmRV1rmCX10Ia1w1RvozKt1SMpYGySAICyyyor1uXswE63I7su5wZTJCI9Iyq4rFViQI6mskYghqLGcAkliNBRDE59eznXDStCytETtbObu1i2VzPV1QDyitNKZETXXVoFvd1FkKw14jZi51SaJnSN059hpTMq3VCDLIskhJIRlgwEoiSJJCWV2JZRZfGT0efc0LEeaMESVW0BVgqhygIUWplshWwra2SswljCSoAiMK6yzmvmsNcUZVkdHZydmufSCLNvTVUjodRn0PYosjBNWNd2LPcmRd5jINa1z02rJiXTSorupUyMoDhFhAIYohBJISSBBKBmeJvpuOmcuibLo5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" class="hero-photo" alt="Munnawar Jamil">
+        <div class="hero-card-name">Munnawar Jamil</div>
+        <div class="hero-card-role">WordPress Developer</div>
+        <div class="hero-card-skills">
+          <span class="skill-chip hot">WordPress</span>
+          <span class="skill-chip hot">WooCommerce</span>
+          <span class="skill-chip hot">Elementor Pro</span>
+          <span class="skill-chip">Figma → WP</span>
+          <span class="skill-chip">GoHighLevel</span>
+          <span class="skill-chip">CRM Automation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stats-band-inner">
+    <div class="band-stat"><div class="band-stat-num">30+</div><div class="band-stat-label">Live Projects</div></div>
+    <div class="band-stat"><div class="band-stat-num">3+</div><div class="band-stat-label">Years Experience</div></div>
+    <div class="band-stat"><div class="band-stat-num">4</div><div class="band-stat-label">Companies</div></div>
+    <div class="band-stat"><div class="band-stat-num">🇺🇸🇬🇧</div><div class="band-stat-label">US & UK Clients</div></div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">What I Work With</div>
+    <h2>Skills & Expertise</h2>
+    <p class="section-desc">Full-stack WordPress development — from pixel-perfect design conversion to performance optimization and automation.</p>
+    <div class="skills-grid">
+      <div class="skill-card"><div class="skill-icon">🔷</div><div class="skill-name">WordPress</div><div class="skill-level">Expert · 3+ Years</div></div>
+      <div class="skill-card"><div class="skill-icon">🛒</div><div class="skill-name">WooCommerce</div><div class="skill-level">Expert · E-commerce Builds</div></div>
+      <div class="skill-card"><div class="skill-icon">⚡</div><div class="skill-name">Elementor Pro</div><div class="skill-level">Expert · Custom Layouts</div></div>
+      <div class="skill-card"><div class="skill-icon">🎨</div><div class="skill-name">Figma → WordPress</div><div class="skill-level">Advanced · Pixel-Perfect</div></div>
+      <div class="skill-card"><div class="skill-icon">🖌️</div><div class="skill-name">Adobe XD → WordPress</div><div class="skill-level">Advanced · Design Systems</div></div>
+      <div class="skill-card"><div class="skill-icon">🔌</div><div class="skill-name">Plugin Customization</div><div class="skill-level">Advanced · Custom Hooks</div></div>
+      <div class="skill-card"><div class="skill-icon">🎨</div><div class="skill-name">Theme Development</div><div class="skill-level">Advanced · Child Themes</div></div>
+      <div class="skill-card"><div class="skill-icon">🚀</div><div class="skill-name">Performance Optimization</div><div class="skill-level">Advanced · Speed & SEO</div></div>
+      <div class="skill-card"><div class="skill-icon">📊</div><div class="skill-name">GoHighLevel</div><div class="skill-level">Proficient · CRM & Funnels</div></div>
+      <div class="skill-card"><div class="skill-icon">🤖</div><div class="skill-name">CRM Automation</div><div class="skill-level">Proficient · Client Campaigns</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label">Work History</div>
+    <h2>Experience</h2>
+    <p class="section-desc">Professional experience building real products for real clients, across agencies and remote roles.</p>
+    <div class="exp-timeline">
+      <div class="exp-item">
+        <div class="exp-date">2023 – Present</div>
+        <div class="exp-dot"></div>
+        <div class="exp-content">
+          <div class="exp-company">Tag The Alpha Group</div>
+          <div class="exp-role">Senior WordPress Developer</div>
+          <div class="exp-desc">Lead development of responsive WordPress websites using Elementor Pro. Convert Figma & Adobe XD designs into fully functional WordPress websites. Customize Jupiter X themes, optimize performance and responsiveness, and implement WooCommerce stores and e-commerce functionality.</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">2022 – 2023</div>
+        <div class="exp-dot"></div>
+        <div class="exp-content">
+          <div class="exp-company">Carpe Diem</div>
+          <div class="exp-role">GoHighLevel Associate & WordPress Developer (Remote)</div>
+          <div class="exp-desc">Managed client campaigns and CRM automation remotely using GoHighLevel. Developed and maintained WordPress websites. Improved theme customization and website performance across multiple client accounts.</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">2021 – 2022</div>
+        <div class="exp-dot"></div>
+        <div class="exp-content">
+          <div class="exp-company">DigiHive</div>
+          <div class="exp-role">Associate WordPress Developer</div>
+          <div class="exp-desc">Built responsive WordPress websites using Elementor. Integrated forms, animations, sliders, and dynamic content. Optimized websites for performance and SEO.</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">2021</div>
+        <div class="exp-dot"></div>
+        <div class="exp-content">
+          <div class="exp-company">SkySoft Technologies</div>
+          <div class="exp-role">WordPress Developer Intern</div>
+          <div class="exp-desc">Developed WordPress pages using Elementor. Assisted in theme customization using HTML, CSS & basic PHP.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background: var(--surface);">
+  <div class="section-inner">
+    <div class="section-label">Portfolio</div>
+    <h2>Featured Projects</h2>
+    <p class="section-desc">Live websites I've built — real clients, real results. Each project tailored to the client's business goals.</p>
+
+    <div class="cat-tabs">
+      <div class="cat-tab active">All</div>
+      <div class="cat-tab">E-commerce</div>
+      <div class="cat-tab">Corporate</div>
+      <div class="cat-tab">Publishing</div>
+      <div class="cat-tab">Services</div>
+    </div>
+
+    <!-- FEATURED -->
+    <div style="margin-bottom:2rem;">
+      <div class="featured-badge">
+        <span class="featured-label">★ Featured Work</span>
+        <span class="featured-sub">Highlighted projects</span>
+      </div>
+      <div class="featured-grid">
+        <div class="project-card" style="border-color:rgba(127,255,106,0.3);">
+          <div class="project-img grad-green">🛒<div class="project-img-label">E-commerce · Featured</div></div>
+          <div class="project-body">
+            <div class="project-cat" style="color:var(--accent);">WooCommerce Store</div>
+            <div class="project-title">Ecom Seller Ease</div>
+            <div class="project-desc">Full-featured e-commerce platform built on WooCommerce. Custom product pages, streamlined checkout, and seller management tools — designed for high conversion.</div>
+            <div class="project-tags"><span class="project-tag">WooCommerce</span><span class="project-tag">Elementor Pro</span><span class="project-tag">Custom Theme</span></div>
+            <a href="https://ecomsellerease.com/" target="_blank" class="project-link">View Live Site →</a>
+          </div>
+        </div>
+        <div class="project-card" style="border-color:rgba(127,255,106,0.3);">
+          <div class="project-img grad-teal">✍️<div class="project-img-label">Publishing · Featured</div></div>
+          <div class="project-body">
+            <div class="project-cat" style="color:var(--accent);">Publishing · US Client</div>
+            <div class="project-title">Authors Byline Publishing</div>
+            <div class="project-desc">Professional book publishing services website for a US-based client. Service packages, author testimonials, and lead capture funnels built to convert.</div>
+            <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">US Client</span></div>
+            <a href="https://authorsbylinepublishing.com/" target="_blank" class="project-link">View Live Site →</a>
+          </div>
+        </div>
+        <div class="project-card" style="border-color:rgba(127,255,106,0.3);">
+          <div class="project-img grad-gold">📖<div class="project-img-label">Publishing · Featured</div></div>
+          <div class="project-body">
+            <div class="project-cat" style="color:var(--accent);">Publishing · Media</div>
+            <div class="project-title">Bridge Publisher</div>
+            <div class="project-desc">Book publishing and media company website with custom editorial design. Services, manuscript submission forms, and author-focused content on clean layouts.</div>
+            <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Custom Theme</span><span class="project-tag">Publishing</span></div>
+            <a href="https://bridgepublisher.com/" target="_blank" class="project-link">View Live Site →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid var(--border);padding-top:2rem;margin-bottom:1.75rem;">
+      <p style="color:var(--muted);font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;">More Projects</p>
+    </div>
+
+    <div class="projects-grid">
+      <!-- E-commerce -->
+      <div class="project-card">
+        <div class="project-img grad-green">🛍️<div class="project-img-label">E-commerce</div></div>
+        <div class="project-body">
+          <div class="project-cat">WooCommerce Store</div>
+          <div class="project-title">Your Smart Stores</div>
+          <div class="project-desc">Full WooCommerce store with product catalog, cart, and checkout. Custom theme built for conversion — fast loading and mobile-first.</div>
+          <div class="project-tags"><span class="project-tag">WooCommerce</span><span class="project-tag">Elementor Pro</span></div>
+          <a href="https://yoursmartstores.com/" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img grad-teal">🛒<div class="project-img-label">E-commerce</div></div>
+        <div class="project-body">
+          <div class="project-cat">E-commerce · US Client</div>
+          <div class="project-title">Seller Merce</div>
+          <div class="project-desc">E-commerce brand website with product showcase, conversion-focused landing pages, and custom WooCommerce integration.</div>
+          <div class="project-tags"><span class="project-tag">WooCommerce</span><span class="project-tag">WordPress</span><span class="project-tag">US Client</span></div>
+          <a href="https://sellermerce.com/" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img grad-blue">📦<div class="project-img-label">E-commerce</div></div>
+        <div class="project-body">
+          <div class="project-cat">E-commerce · US Client</div>
+          <div class="project-title">Content Center LLC</div>
+          <div class="project-desc">Business services platform with professional layout, service sections, and client-focused lead generation for US market.</div>
+          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">US Client</span></div>
+          <a href="https://www.contentcenterllc.com/" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img grad-green">⚡<div class="project-img-label">E-commerce</div></div>
+        <div class="project-body">
+          <div class="project-cat">E-commerce · Electronics</div>
+          <div class="project-title">Ameer Electronics</div>
+          <div class="project-desc">Electronics retail store with WooCommerce product catalog, category filtering, and streamlined checkout experience.</div>
+          <div class="project-tags"><span class="project-tag">WooCommerce</span><span class="project-tag">WordPress</span><span class="project-tag">Custom Theme</span></div>
+          <a href="https://ameerelectronics.com/" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img grad-teal">👗<div class="project-img-label">E-commerce</div></div>
+        <div class="project-body">
+          <div class="project-cat">Fashion · E-commerce</div>
+          <div class="project-title">Eutopia Trend</div>
+          <div class="project-desc">Fashion brand WooCommerce store with elegant product displays, lookbook sections, and a modern shopping experience.</div>
+          <div class="project-tags"><span class="project-tag">WooCommerce</span><span class="project-tag">Elementor Pro</span><span class="project-tag">Fashion</span></div>
+          <a href="https://eutopiatrend.com/" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img grad-gold">💎<div class="project-img-label">E-commerce</div></div>
+        <div class="project-body">
+          <div class="project-cat">Luxury · Stone Products</div>
+          <div class="project-title">Prestigious Stone</div>
+          <div class="project-desc">Luxury stone and marble products website with premium design aesthetic, portfolio gallery, and inquiry forms.</div>
+          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">Luxury</span></div>
+          <a href="https://prestigiousstone.com/" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <!-- Corporate -->
+      <div class="project-card">
+        <div class="project-img grad-blue">🏢<div class="project-img-label">Corporate</div></div>
+        <div class="project-body">
+          <div class="project-cat">Corporate · Ventures</div>
+          <div class="project-title">Vertez Ventures LLC</div>
+          <div class="project-desc">Corporate ventures firm website with clean professional design, services sections, team pages, and business-focused lead capture.</div>
+          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Figma → WP</span><span class="project-tag">Corporate</span></div>
+          <a href="https://vertezventuresllc.com/" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img grad-teal">🏢<div class="project-img-label">Corporate</div></div>
+        <div class="project-body">
+          <div class="project-cat">Corporate · Agency</div>
+          <div class="project-title">DigiHive</div>
+          <div class="project-desc">Full digital agency website with services pages, portfolio showcase, and lead capture. Built with Elementor Pro and custom WordPress theme.</div>
+          <div class="project-tags"><span class="project-tag">Elementor Pro</span><span class="project-tag">Custom Theme</span><span class="project-tag">Agency</span></div>
+          <a href="https://digihive.com.pk" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img grad-slate">🌍<div class="project-img-label">Corporate · US Client</div></div>
+        <div class="project-body">
+          <div class="project-cat">Corporate · US Client</div>
+          <div class="project-title">Corporate Ecom Solutions</div>
+          <div class="project-desc">B2B e-commerce solutions company website with corporate branding, service offerings, and professional contact flow.</div>
+          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">US Client</span></div>
+          <a href="https://corporateecomsolutions.com/" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img grad-blue">📊<div class="project-img-label">Corporate · US Client</div></div>
+        <div class="project-body">
+          <div class="project-cat">E-commerce · Consulting</div>
+          <div class="project-title">Agile Ecomm</div>
+          <div class="project-desc">E-commerce consultancy website for a US-based agency with service listings, case studies, and client-facing landing pages.</div>
+          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">US Client</span></div>
+          <a href="https://agileecomm.com/" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img grad-green">🛒<div class="project-img-label">E-commerce · US Client</div></div>
+        <div class="project-body">
+          <div class="project-cat">E-commerce · Community</div>
+          <div class="project-title">The Ecom Smers</div>
+          <div class="project-desc">E-commerce community and brand website with custom page designs, membership sections, and engaging content layout.</div>
+          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">WooCommerce</span><span class="project-tag">US Client</span></div>
+          <a href="https://theecomsmers.com/" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <!-- Personal Brands -->
+      <div class="project-card">
+        <div class="project-img grad-rose">👤<div class="project-img-label">Personal Brand · US Client</div></div>
+        <div class="project-body">
+          <div class="project-cat">Personal Brand · US Client</div>
+          <div class="project-title">Don P. Valeri</div>
+          <div class="project-desc">Author and personal brand website for US client Don Valeri. Clean, professional layout with blog, book showcase, and bio sections.</div>
+          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">Personal Brand</span></div>
+          <a href="https://donpvaleri.com/" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img grad-slate">⚔️<div class="project-img-label">Personal Brand · US Client</div></div>
+        <div class="project-body">
+          <div class="project-cat">Personal Brand · US Client</div>
+          <div class="project-title">Making America Chivalrous Again</div>
+          <div class="project-desc">Niche personal brand website with blog and community-focused content, built for US client with engaging editorial layout.</div>
+          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">US Client</span></div>
+          <a href="https://makingamericachivalrousagain.com/" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img grad-blue">🏗️<div class="project-img-label">Personal Brand · US Client</div></div>
+        <div class="project-body">
+          <div class="project-cat">Personal Brand · US Client</div>
+          <div class="project-title">Drew Hamilton Enterprises</div>
+          <div class="project-desc">Entrepreneurial brand and consulting website for US client with professional services layout and conversion-focused design.</div>
+          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Custom Theme</span><span class="project-tag">US Client</span></div>
+          <a href="https://drewhamiltonenterprises.com/" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img grad-rose">👤<div class="project-img-label">Personal Brand · US Client</div></div>
+        <div class="project-body">
+          <div class="project-cat">Personal Brand · Author</div>
+          <div class="project-title">Michel Shehadeh</div>
+          <div class="project-desc">Author personal brand website with book listings, speaking info, media features, and professional biography sections.</div>
+          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">Author</span></div>
+          <a href="https://michelshehadeh.com/" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img grad-teal">👩‍💼<div class="project-img-label">Personal Brand · US Client</div></div>
+        <div class="project-body">
+          <div class="project-cat">Personal Brand · Consultant</div>
+          <div class="project-title">Daniela McMahon</div>
+          <div class="project-desc">Professional consultant personal brand website with services, testimonials, contact forms, and clean modern layout.</div>
+          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">Consulting</span></div>
+          <a href="https://danielamcmahon.com/" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <!-- Publishing -->
+      <div class="project-card">
+        <div class="project-img grad-gold">📚<div class="project-img-label">Publishing · US Client</div></div>
+        <div class="project-body">
+          <div class="project-cat">Publishing · US Client</div>
+          <div class="project-title">McMillan Book Writing</div>
+          <div class="project-desc">Book writing & publishing services website for US-based client. Custom landing pages, service packages, and inquiry funnels built to convert.</div>
+          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">US Client</span><span class="project-tag">Lead Gen</span></div>
+          <a href="https://mcmillanbookwriting.com" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="project-card">
+        <div class="project-img grad-rose">✈️<div class="project-img-label">Services · Travel</div></div>
+        <div class="project-body">
+          <div class="project-cat">Travel & Tours</div>
+          <div class="project-title">ROD Travel & Tours</div>
+          <div class="project-desc">Travel agency website with tour packages, booking forms, and destination galleries. Fully responsive with custom Elementor layouts.</div>
+          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">Booking</span></div>
+          <a href="https://rodtravelandtours.pk" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img grad-blue">🏥<div class="project-img-label">Services · Healthcare</div></div>
+        <div class="project-body">
+          <div class="project-cat">Medical / Healthcare</div>
+          <div class="project-title">Complete Medical PK</div>
+          <div class="project-desc">Healthcare services website with doctor profiles, service pages, and appointment booking integration.</div>
+          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Custom Theme</span><span class="project-tag">Healthcare</span></div>
+          <a href="https://completemedical.pk" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img grad-slate">📝<div class="project-img-label">Services · UK Client</div></div>
+        <div class="project-body">
+          <div class="project-cat">Academic · UK Client</div>
+          <div class="project-title">British Assignment Writing</div>
+          <div class="project-desc">Academic writing services platform for UK-based client. Service pages, order flow, and conversion-optimized landing pages.</div>
+          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">UK Client</span><span class="project-tag">Conversion</span></div>
+          <a href="https://britishassignmentwriting.com" target="_blank" class="project-link">View Live Site →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="more-projects">
+      Showing <strong>21 projects</strong> from my portfolio of <strong>30+</strong> live websites — more available on request.
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-label">Let's Work Together</div>
+        <h2>Got a Project in Mind?</h2>
+        <p>Whether you need a WooCommerce store, a custom WordPress site from Figma designs, or performance optimization — let's talk. Available for freelance projects and full-time roles.</p>
+        <div style="display:flex;flex-direction:column;gap:0.85rem;">
+          <a href="https://mail.google.com/mail/?view=cm&to=munnawarjamil4@gmail.com" target="_blank" class="contact-link">
+            <span class="contact-link-icon">📧</span>
+            <div><div class="contact-link-label">Email</div><div class="contact-link-val">munnawarjamil4@gmail.com</div></div>
+          </a>
+          <a href="tel:+923118963122" class="contact-link">
+            <span class="contact-link-icon">📞</span>
+            <div><div class="contact-link-label">Phone / WhatsApp</div><div class="contact-link-val">+92 311 896 3122</div></div>
+          </a>
+          <a href="https://www.linkedin.com/in/munnawar-jamil0aa3a1283" target="_blank" class="contact-link">
+            <span class="contact-link-icon">🔗</span>
+            <div><div class="contact-link-label">LinkedIn</div><div class="contact-link-val">munnawar-jamil</div></div>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="contact-card">
+          <p style="color:var(--muted);font-size:0.88rem;line-height:1.7;">Reach out directly — I typically respond within 24 hours. Available for freelance projects, full-time roles, and consultations.</p>
+          <a href="https://mail.google.com/mail/?view=cm&to=munnawarjamil4@gmail.com" target="_blank" class="contact-link">
+            <span class="contact-link-icon">📧</span>
+            <div><div class="contact-link-label">Email</div><div class="contact-link-val">munnawarjamil4@gmail.com</div></div>
+          </a>
+          <a href="https://wa.me/923118963122" target="_blank" class="contact-link">
+            <span class="contact-link-icon">💬</span>
+            <div><div class="contact-link-label">WhatsApp</div><div class="contact-link-val">+92 311 896 3122</div></div>
+          </a>
+          <a href="https://www.linkedin.com/in/munnawar-jamil0aa3a1283" target="_blank" class="contact-link">
+            <span class="contact-link-icon">🔗</span>
+            <div><div class="contact-link-label">LinkedIn</div><div class="contact-link-val">munnawar-jamil</div></div>
+          </a>
+          <div class="contact-note">💼 Open to freelance & full-time · 🕐 Response within 24h · 🌍 Remote worldwide</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 <strong style="color:var(--text);">Munnawar Jamil</strong> — WordPress Developer</span>
+    <span>Built with care · <a href="https://mail.google.com/mail/?view=cm&to=munnawarjamil4@gmail.com" target="_blank">munnawarjamil4@gmail.com</a></span>
+  </div>
+</footer>
+
+<script>
+  // Category tabs
+  document.querySelectorAll('.cat-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
+HTMLEOF
+echo "Done"
+Output
+
+Done
+
+
+
+
+
+
