@@ -15,13 +15,13 @@
 <meta property="og:site_name" content="MJ WEB CRAFT">
 <meta property="og:locale" content="en_US">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23090B18'/%3E%3Cpath d='M7 23V9l9 8 9-8v14' stroke='%232E6BFF' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="images/favicon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -32,7 +32,7 @@
   <div class="container header-row">
     <a href="#home" class="brand" aria-label="MJ WEB CRAFT home">
       <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="8" class="brand-mark-bg"/><path d="M7 23V9l9 8 9-8v14" class="brand-mark-glyph"/></svg>
+        <img src="images/logo-icon.png" alt="">
       </span>
       <span class="brand-text">
         <span class="brand-name">MJ WEB CRAFT</span>
@@ -495,7 +495,11 @@
       </div>
 
       <form class="contact-form" id="contactForm" novalidate
-            data-note="Frontend-only form for the GitHub Pages version. Wire the onSubmit handler in js/script.js to WordPress/PHP (wp_mail or admin-post.php) or a form service (Formspree, Getform) after migration.">
+            action="https://formspree.io/f/mdekzprj" method="POST"
+            data-note="Submits to Formspree (sends an email to munnawarjamil4@gmail.com) and opens a pre-filled WhatsApp chat. See the FORM_ENDPOINT constant and handleSubmit() in js/script.js.">
+
+        <!-- honeypot spam trap: real visitors never see or fill this -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
         <div class="form-row">
           <label for="f-name">Name</label>
@@ -604,10 +608,10 @@
     </div>
   </div>
   <div class="container footer-bottom">
-    <p>&copy; 2026 MJ WEBCRAFT. All Rights Reserved.</p>
+    <p>&copy; 2026 MJ WEB CRAFT. All Rights Reserved.</p>
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
