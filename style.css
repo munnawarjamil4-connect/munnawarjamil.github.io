@@ -134,9 +134,7 @@ body{
   height:76px;
 }
 .brand{ display:flex; align-items:center; gap:12px; }
-.brand-mark svg{ width:38px; height:38px; }
-.brand-mark-bg{ fill:var(--ink-2); }
-.brand-mark-glyph{ fill:none; stroke:var(--electric); }
+.brand-mark img{ width:38px; height:38px; display:block; border-radius:8px; }
 .brand-text{ display:flex; flex-direction:column; line-height:1.15; }
 .brand-name{ font-family:var(--font-display); font-weight:700; font-size:17px; letter-spacing:0.02em; }
 .brand-tagline{ font-size:11px; color:var(--mist); letter-spacing:0.06em; }
