@@ -3,760 +3,611 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Munnawar Jamil — WordPress Developer</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #080808;
-    --surface: #0f0f0f;
-    --surface2: #181818;
-    --border: #1e1e1e;
-    --accent: #7fff6a;
-    --accent2: #3de8c8;
-    --accent3: #ffcc44;
-    --text: #f0f0f0;
-    --muted: #777;
-    --heading: 'Syne', sans-serif;
-    --body: 'DM Sans', sans-serif;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--body);
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+<title>MJ WEB CRAFT | Web Design &amp; Development</title>
+<meta name="description" content="MJ WEB CRAFT provides modern web design, web development, WordPress, e-commerce and custom digital solutions for businesses.">
+<meta name="keywords" content="web design, web development, WordPress development, e-commerce, MJ WEB CRAFT, digital agency Pakistan">
+<meta name="author" content="MJ WEB CRAFT">
 
-  /* ─── NAV ─── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.1rem 4rem;
-    background: rgba(8,8,8,0.9);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo { text-decoration: none; display: flex; align-items: center; gap: 1px; }
-  .logo-m { font-family: var(--heading); font-weight: 800; font-size: 1.6rem; color: var(--accent); letter-spacing: -0.04em; line-height: 1; text-shadow: 0 0 20px rgba(127,255,106,0.4); }
-  .logo-j { font-family: var(--heading); font-weight: 800; font-size: 1.6rem; color: var(--text); letter-spacing: -0.04em; line-height: 1; }
-  .logo-dot { font-family: var(--heading); font-weight: 800; font-size: 1.8rem; color: var(--accent); line-height: 1; margin-left: 1px; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--accent); }
-  .nav-cta { background: var(--accent); color: #080808; padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem; text-decoration: none; transition: opacity 0.2s, transform 0.2s; font-family: var(--heading); }
-  .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="MJ WEB CRAFT | Web Design & Development">
+<meta property="og:description" content="Modern websites, powerful WordPress solutions and custom digital experiences designed to help businesses build credibility, attract customers and grow online.">
+<meta property="og:site_name" content="MJ WEB CRAFT">
+<meta property="og:locale" content="en_US">
 
-  /* ─── HERO ─── */
-  #home {
-    min-height: 100vh;
-    display: flex; align-items: center;
-    padding: 8rem 4rem 4rem;
-    position: relative; overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background:
-      radial-gradient(ellipse 60% 55% at 70% 40%, rgba(127,255,106,0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 15% 75%, rgba(61,232,200,0.05) 0%, transparent 60%),
-      radial-gradient(ellipse 30% 30% at 85% 80%, rgba(255,204,68,0.03) 0%, transparent 60%);
-  }
-  .hero-grid {
-    position: absolute; inset: 0; z-index: 0;
-    background-image: linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-    background-size: 64px 64px;
-  }
-  .hero-inner {
-    position: relative; z-index: 1;
-    max-width: 1140px; margin: 0 auto; width: 100%;
-    display: grid; grid-template-columns: 1fr 360px; gap: 5rem; align-items: center;
-  }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(127,255,106,0.08); border: 1px solid rgba(127,255,106,0.28);
-    color: var(--accent); font-size: 0.78rem; font-weight: 700;
-    padding: 0.4rem 1rem; border-radius: 100px;
-    letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1.5rem;
-  }
-  .hero-badge::before { content: '●'; font-size: 0.5rem; animation: blink 1.5s infinite; }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
-  h1 { font-family: var(--heading); font-size: clamp(2.6rem, 5vw, 4.2rem); font-weight: 800; line-height: 1.04; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
-  h1 .accent { color: var(--accent); }
-  h1 .accent2 { color: var(--accent2); }
-  .hero-desc { font-size: 1.05rem; color: var(--muted); max-width: 520px; line-height: 1.75; margin-bottom: 2.5rem; }
-  .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; }
-  .stat-num { font-family: var(--heading); font-size: 2.1rem; font-weight: 800; color: var(--text); line-height: 1; }
-  .stat-num span { color: var(--accent); }
-  .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem; letter-spacing: 0.03em; }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary { background: var(--accent); color: #080808; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; font-family: var(--heading); transition: transform 0.2s, opacity 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; }
-  .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
-  .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--text); padding: 0.85rem 2rem; border-radius: 8px; font-weight: 500; font-size: 0.95rem; text-decoration: none; transition: border-color 0.2s, transform 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; }
-  .btn-secondary:hover { border-color: var(--accent); transform: translateY(-2px); }
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23090B18'/%3E%3Cpath d='M7 23V9l9 8 9-8v14' stroke='%232E6BFF' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 
-  /* Download CV button — matches existing design system */
-  .btn-cv {
-    background: transparent;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    padding: 0.85rem 2rem;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    text-decoration: none;
-    font-family: var(--heading);
-    transition: transform 0.2s, opacity 0.2s, background 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .btn-cv:hover {
-    background: rgba(127,255,106,0.08);
-    transform: translateY(-2px);
-  }
-  .btn-cv svg { flex-shrink: 0; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  /* Hero card */
-  .hero-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; text-align: center; position: relative; overflow: hidden; }
-  .hero-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(127,255,106,0.14), transparent 70%); border-radius: 50%; }
-  .hero-photo { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); margin: 0 auto 1rem; display: block; box-shadow: 0 0 30px rgba(127,255,106,0.2); }
-  .hero-card-name { font-family: var(--heading); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem; }
-  .hero-card-role { font-size: 0.82rem; color: var(--accent); font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 0.04em; }
-  .hero-card-skills { display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center; }
-  .skill-chip { background: var(--surface2); border: 1px solid var(--border); color: var(--muted); font-size: 0.73rem; padding: 0.28rem 0.7rem; border-radius: 100px; font-weight: 500; }
-  .skill-chip.hot { border-color: rgba(127,255,106,0.4); color: var(--accent); background: rgba(127,255,106,0.06); }
-
-  /* ─── SECTIONS ─── */
-  section { padding: 6rem 4rem; }
-  .section-inner { max-width: 1140px; margin: 0 auto; }
-  .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem; }
-  h2 { font-family: var(--heading); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.85rem; line-height: 1.12; }
-  .section-desc { color: var(--muted); font-size: 1rem; max-width: 560px; margin-bottom: 3rem; line-height: 1.7; }
-
-  /* ─── SKILLS ─── */
-  #skills { background: var(--surface); }
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 1rem; }
-  .skill-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.4rem; transition: border-color 0.2s, transform 0.2s; }
-  .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-  .skill-icon { font-size: 1.4rem; margin-bottom: 0.7rem; }
-  .skill-name { font-family: var(--heading); font-weight: 700; font-size: 0.92rem; margin-bottom: 0.2rem; }
-  .skill-level { font-size: 0.72rem; color: var(--accent); font-weight: 600; letter-spacing: 0.04em; }
-
-  /* ─── EXPERIENCE ─── */
-  .exp-timeline { display: flex; flex-direction: column; gap: 0; }
-  .exp-item { display: grid; grid-template-columns: 160px 1fr; gap: 2rem; position: relative; padding-bottom: 2.5rem; }
-  .exp-item:not(:last-child)::after { content: ''; position: absolute; left: 159px; top: 28px; bottom: 0; width: 1px; background: var(--border); }
-  .exp-date { color: var(--muted); font-size: 0.82rem; font-weight: 500; padding-top: 4px; }
-  .exp-dot { position: absolute; left: 153px; top: 6px; width: 13px; height: 13px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); box-shadow: 0 0 10px rgba(127,255,106,0.4); }
-  .exp-company { font-family: var(--heading); font-weight: 700; font-size: 0.95rem; color: var(--accent); margin-bottom: 0.2rem; }
-  .exp-role { font-weight: 600; font-size: 1.02rem; margin-bottom: 0.5rem; }
-  .exp-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.65; }
-
-  /* ─── PROJECTS ─── */
-  .cat-tabs { display: flex; gap: 0.65rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
-  .cat-tab { background: var(--surface); border: 1px solid var(--border); color: var(--muted); font-size: 0.78rem; font-weight: 700; padding: 0.42rem 1rem; border-radius: 100px; cursor: pointer; transition: all 0.2s; font-family: var(--heading); letter-spacing: 0.04em; }
-  .cat-tab.active, .cat-tab:hover { background: rgba(127,255,106,0.1); border-color: var(--accent); color: var(--accent); }
-
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
-  .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.22s, transform 0.22s; display: flex; flex-direction: column; }
-  .project-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
-  .project-img { height: 160px; background: var(--surface2); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
-  .project-img-label { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); font-size: 0.68rem; color: var(--muted); padding: 0.35rem 0.75rem; font-family: var(--heading); font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; }
-  .project-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
-  .project-cat { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.45rem; }
-  .project-title { font-family: var(--heading); font-weight: 700; font-size: 1.05rem; margin-bottom: 0.45rem; color: var(--text); }
-  .project-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.9rem; flex: 1; }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.9rem; }
-  .project-tag { background: var(--surface2); border: 1px solid var(--border); color: var(--muted); font-size: 0.68rem; padding: 0.18rem 0.55rem; border-radius: 4px; font-weight: 500; }
-  .project-link { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); font-size: 0.82rem; font-weight: 700; text-decoration: none; font-family: var(--heading); transition: gap 0.2s, opacity 0.2s; letter-spacing: 0.03em; }
-  .project-link:hover { gap: 0.65rem; opacity: 0.85; }
-
-  .featured-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
-  .featured-badge { display: inline-flex; align-items: center; gap: 0.6rem; margin-bottom: 1.25rem; }
-  .featured-label { background: rgba(127,255,106,0.1); border: 1px solid rgba(127,255,106,0.3); color: var(--accent); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.32rem 0.85rem; border-radius: 100px; }
-  .featured-sub { color: var(--muted); font-size: 0.8rem; }
-
-  .more-projects { margin-top: 2.5rem; text-align: center; color: var(--muted); font-size: 0.88rem; padding: 1.25rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; }
-  .more-projects strong { color: var(--text); }
-
-  /* Stats band */
-  .stats-band { background: var(--surface2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2rem 4rem; }
-  .stats-band-inner { max-width: 1140px; margin: 0 auto; display: flex; gap: 0; justify-content: space-around; flex-wrap: wrap; }
-  .band-stat { text-align: center; padding: 0 2rem; }
-  .band-stat-num { font-family: var(--heading); font-size: 2.4rem; font-weight: 800; color: var(--accent); line-height: 1; }
-  .band-stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; }
-
-  /* ─── CONTACT ─── */
-  #contact { background: var(--surface); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-  .contact-info p { color: var(--muted); line-height: 1.75; margin-bottom: 2rem; font-size: 0.95rem; }
-  .contact-card { background: var(--bg); border: 1px solid rgba(127,255,106,0.18); border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
-  .contact-link { display: flex; align-items: center; gap: 1rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 1.05rem 1.2rem; text-decoration: none; color: var(--text); transition: border-color 0.2s, transform 0.2s; }
-  .contact-link:hover { border-color: var(--accent); transform: translateX(4px); }
-  .contact-link-icon { font-size: 1.3rem; flex-shrink: 0; }
-  .contact-link-label { font-size: 0.7rem; color: var(--muted); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; }
-  .contact-link-val { font-weight: 600; font-size: 0.9rem; color: var(--accent); }
-  .contact-note { color: var(--muted); font-size: 0.82rem; line-height: 1.65; border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 0.25rem; }
-
-  /* ─── FOOTER ─── */
-  footer { border-top: 1px solid var(--border); padding: 2rem 4rem; text-align: center; color: var(--muted); font-size: 0.83rem; }
-  footer a { color: var(--accent); text-decoration: none; }
-  .footer-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-
-  /* ─── ANIMATIONS ─── */
-  .fade-in { opacity: 0; transform: translateY(22px); animation: fadeIn 0.65s ease forwards; }
-  @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
-  .delay-1 { animation-delay: 0.1s; }
-  .delay-2 { animation-delay: 0.2s; }
-  .delay-3 { animation-delay: 0.3s; }
-  .delay-4 { animation-delay: 0.4s; }
-  .delay-5 { animation-delay: 0.5s; }
-
-  /* gradient variants for project cards */
-  .grad-green { background: linear-gradient(135deg, #0a160a, #172616); }
-  .grad-teal  { background: linear-gradient(135deg, #071414, #0d2424); }
-  .grad-gold  { background: linear-gradient(135deg, #161206, #251e08); }
-  .grad-blue  { background: linear-gradient(135deg, #07091a, #0d1228); }
-  .grad-rose  { background: linear-gradient(135deg, #160a0a, #251213); }
-  .grad-slate { background: linear-gradient(135deg, #0d0d10, #16161e); }
-
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 960px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    section { padding: 4rem 1.5rem; }
-    #home { padding: 7rem 1.5rem 3rem; }
-    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
-    .hero-card { max-width: 320px; }
-    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
-    .exp-item::after, .exp-dot { display: none; }
-    .stats-band { padding: 2rem 1.5rem; }
-    footer { padding: 2rem 1.5rem; }
-    .footer-inner { justify-content: center; text-align: center; }
-    .hero-actions { flex-direction: column; align-items: stretch; }
-    .hero-actions a { justify-content: center; }
-  }
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#home" class="nav-logo"><span class="logo-m">M</span><span class="logo-j">J</span><span class="logo-dot">.</span></a>
-  <ul class="nav-links">
-    <li><a href="#home">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="https://mail.google.com/mail/?view=cm&to=munnawarjamil4@gmail.com" target="_blank" class="nav-cta"> Contact Me →</a>
-</nav>
+<!-- ============================================================
+     HEADER
+============================================================ -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-row">
+    <a href="#home" class="brand" aria-label="MJ WEB CRAFT home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="8" class="brand-mark-bg"/><path d="M7 23V9l9 8 9-8v14" class="brand-mark-glyph"/></svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">MJ WEB CRAFT</span>
+        <span class="brand-tagline">Web Design &amp; Development</span>
+      </span>
+    </a>
 
-<!-- HERO -->
-<section id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-badge fade-in">Available for new projects</div>
-      <h1 class="fade-in delay-1">
-        I Build <span class="accent">WordPress</span><br>
-        Sites That <span class="accent2">Actually</span><br>
-        Drive Results.
-      </h1>
-      <p class="hero-desc fade-in delay-2">
-        70+ WordPress & WooCommerce projects delivered for local and international clients. Custom WordPress themes, WooCommerce stores, Webflow funnels, Figma-to-web builds, and Go High Level CRM automation — with 4+ years of hands-on experience.
-      </p>
-      <div class="hero-stats fade-in delay-3">
-        <div class="stat-item">
-          <div class="stat-num">70<span>+</span></div>
-          <div class="stat-label">Projects Delivered</div>
+    <nav class="main-nav" id="mainNav" aria-label="Primary">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="#contact" class="btn btn-primary btn-sm">Start Your Project</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="home">
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero">
+    <div class="hero-field" aria-hidden="true">
+      <div class="glow glow-a"></div>
+      <div class="glow glow-b"></div>
+    </div>
+
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1 class="hero-title">
+          We build digital experiences<br>
+          that <span class="text-gradient">grow businesses.</span>
+        </h1>
+        <p class="hero-sub">
+          Modern websites, powerful WordPress solutions and custom digital experiences designed to help businesses build credibility, attract customers and grow online.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Start Your Project</a>
+          <a href="#projects" class="btn btn-ghost">View Our Work</a>
         </div>
-        <div class="stat-item">
-          <div class="stat-num">4<span>+</span></div>
-          <div class="stat-label">Years Experience</div>
+        <ul class="trust-points">
+          <li><svg viewBox="0 0 24 24" class="tick"><path d="M4 12.5l5 5L20 6"/></svg> Modern &amp; Responsive</li>
+          <li><svg viewBox="0 0 24 24" class="tick"><path d="M4 12.5l5 5L20 6"/></svg> Performance Focused</li>
+          <li><svg viewBox="0 0 24 24" class="tick"><path d="M4 12.5l5 5L20 6"/></svg> Business Focused</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <svg id="heroSvg" viewBox="0 0 520 480" class="hero-svg">
+          <g class="grid-lines">
+            <rect x="70" y="60" width="380" height="360" rx="18" class="hero-frame"/>
+            <line x1="70" y1="118" x2="450" y2="118" class="hero-frame-line"/>
+            <circle cx="98" cy="89" r="5" class="hero-dot dot-red"/>
+            <circle cx="118" cy="89" r="5" class="hero-dot dot-amber"/>
+            <circle cx="138" cy="89" r="5" class="hero-dot dot-green"/>
+          </g>
+          <g class="hero-nodes" fill="none" stroke-linecap="round">
+            <path class="node-path p1" d="M110 160 L210 200 L300 150 L410 210"/>
+            <path class="node-path p2" d="M110 260 L230 300 L340 260 L410 320"/>
+            <path class="node-path p3" d="M140 360 L260 340 L380 380"/>
+          </g>
+          <g class="hero-points">
+            <circle cx="110" cy="160" r="6" class="pt pt-blue"/>
+            <circle cx="210" cy="200" r="5" class="pt pt-violet"/>
+            <circle cx="300" cy="150" r="6" class="pt pt-blue"/>
+            <circle cx="410" cy="210" r="5" class="pt pt-violet"/>
+            <circle cx="110" cy="260" r="5" class="pt pt-violet"/>
+            <circle cx="230" cy="300" r="6" class="pt pt-blue"/>
+            <circle cx="340" cy="260" r="5" class="pt pt-violet"/>
+            <circle cx="410" cy="320" r="6" class="pt pt-blue"/>
+            <circle cx="140" cy="360" r="5" class="pt pt-violet"/>
+            <circle cx="260" cy="340" r="6" class="pt pt-blue"/>
+            <circle cx="380" cy="380" r="5" class="pt pt-violet"/>
+          </g>
+          <text x="90" y="145" class="hero-code">&lt;div class="site"&gt;</text>
+          <text x="90" y="405" class="hero-code">&lt;/div&gt;</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICES
+  ============================================================ -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2>Digital Solutions For Modern Businesses</h2>
+        <p>Every engagement is built around one goal: a website that works as hard as you do.</p>
+      </div>
+
+      <div class="card-grid services-grid">
+
+        <article class="service-card">
+          <span class="service-index">01</span>
+          <span class="service-icon">{{ICON:code}}</span>
+          <h3>Web Development</h3>
+          <p>Custom-built websites using clean, semantic code — fast, scalable and built to last beyond the first redesign.</p>
+          <a href="#contact" class="card-link">Learn more <span aria-hidden="true">›</span></a>
+        </article>
+
+        <article class="service-card">
+          <span class="service-index">02</span>
+          <span class="service-icon">{{ICON:layout}}</span>
+          <h3>Web Design &amp; UI/UX</h3>
+          <p>Interfaces designed around how real customers browse, decide and act — not just how a page looks in isolation.</p>
+          <a href="#contact" class="card-link">Learn more <span aria-hidden="true">›</span></a>
+        </article>
+
+        <article class="service-card">
+          <span class="service-index">03</span>
+          <span class="service-icon">{{ICON:wp}}</span>
+          <h3>WordPress Development</h3>
+          <p>Custom themes, Elementor builds and plugin work that give you a site you can actually manage yourself.</p>
+          <a href="#contact" class="card-link">Learn more <span aria-hidden="true">›</span></a>
+        </article>
+
+        <article class="service-card">
+          <span class="service-index">04</span>
+          <span class="service-icon">{{ICON:cart}}</span>
+          <h3>E-commerce Development</h3>
+          <p>WooCommerce and custom storefronts built for smooth checkout, clear product discovery and repeat customers.</p>
+          <a href="#contact" class="card-link">Learn more <span aria-hidden="true">›</span></a>
+        </article>
+
+        <article class="service-card">
+          <span class="service-index">05</span>
+          <span class="service-icon">{{ICON:building}}</span>
+          <h3>Business Websites</h3>
+          <p>Professional, credible websites for local and international businesses that need to look established from day one.</p>
+          <a href="#contact" class="card-link">Learn more <span aria-hidden="true">›</span></a>
+        </article>
+
+        <article class="service-card">
+          <span class="service-index">06</span>
+          <span class="service-icon">{{ICON:gear}}</span>
+          <h3>Custom WordPress Solutions</h3>
+          <p>Portals, dashboards, booking systems and management tools built on top of WordPress when off-the-shelf isn't enough.</p>
+          <a href="#contact" class="card-link">Learn more <span aria-hidden="true">›</span></a>
+        </article>
+
+        <article class="service-card">
+          <span class="service-index">07</span>
+          <span class="service-icon">{{ICON:target}}</span>
+          <h3>Landing Pages</h3>
+          <p>High-converting, single-focus pages built for campaigns, launches and lead generation that need to perform immediately.</p>
+          <a href="#contact" class="card-link">Learn more <span aria-hidden="true">›</span></a>
+        </article>
+
+        <article class="service-card">
+          <span class="service-index">08</span>
+          <span class="service-icon">{{ICON:refresh}}</span>
+          <h3>Website Redesign</h3>
+          <p>Rebuilding outdated or underperforming sites into something that matches the quality of the business behind it.</p>
+          <a href="#contact" class="card-link">Learn more <span aria-hidden="true">›</span></a>
+        </article>
+
+        <article class="service-card">
+          <span class="service-index">09</span>
+          <span class="service-icon">{{ICON:gauge}}</span>
+          <h3>Website Speed Optimization</h3>
+          <p>Faster load times, better Core Web Vitals and a smoother experience — for visitors and for search rankings.</p>
+          <a href="#contact" class="card-link">Learn more <span aria-hidden="true">›</span></a>
+        </article>
+
+        <article class="service-card">
+          <span class="service-index">10</span>
+          <span class="service-icon">{{ICON:shield}}</span>
+          <h3>Website Maintenance</h3>
+          <p>Ongoing updates, backups, security checks and small fixes so your site stays reliable long after launch.</p>
+          <a href="#contact" class="card-link">Learn more <span aria-hidden="true">›</span></a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SOLUTIONS
+  ============================================================ -->
+  <section class="section section-alt" id="solutions">
+    <div class="container">
+      <div class="section-head">
+        <h2>Solutions Built Around Your Business</h2>
+        <p>No two businesses sell the same way — so no two websites should be built the same way. Every project starts with your goals and your audience, not a template.</p>
+      </div>
+
+      <div class="pill-grid">
+        <span class="pill">Business Websites</span>
+        <span class="pill">Corporate Websites</span>
+        <span class="pill">E-commerce</span>
+        <span class="pill">Healthcare</span>
+        <span class="pill">Education</span>
+        <span class="pill">Real Estate</span>
+        <span class="pill">Restaurants</span>
+        <span class="pill">Travel &amp; Tourism</span>
+        <span class="pill">Professional Services</span>
+        <span class="pill">Personal Brands</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY MJ WEB CRAFT
+  ============================================================ -->
+  <section class="section" id="why">
+    <div class="container">
+      <div class="section-head">
+        <h2>More than just a website.</h2>
+        <p>MJ WEB CRAFT builds websites that establish credibility, generate leads and support growth — not just digital brochures.</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-block">
+          <span class="feature-icon">{{ICON:strategy}}</span>
+          <h3>Strategic Design</h3>
+          <p>Every layout decision is tied to a business goal — attention, trust or conversion — not aesthetics alone.</p>
         </div>
-        <div class="stat-item">
-          <div class="stat-num">4</div>
-          <div class="stat-label">Companies</div>
+        <div class="feature-block">
+          <span class="feature-icon">{{ICON:device}}</span>
+          <h3>Responsive Development</h3>
+          <p>Built to work cleanly across phones, tablets and desktops, since that's where your customers actually are.</p>
+        </div>
+        <div class="feature-block">
+          <span class="feature-icon">{{ICON:bolt}}</span>
+          <h3>Fast Performance</h3>
+          <p>Optimized code and assets so pages load quickly — before visitors have a reason to leave.</p>
+        </div>
+        <div class="feature-block">
+          <span class="feature-icon">{{ICON:target}}</span>
+          <h3>Conversion Focused</h3>
+          <p>Clear calls to action and a smooth path from visitor to inquiry, built into the structure of every page.</p>
+        </div>
+        <div class="feature-block">
+          <span class="feature-icon">{{ICON:search}}</span>
+          <h3>SEO-Friendly Structure</h3>
+          <p>Semantic markup, clean URLs and organized content that give search engines a reason to rank you.</p>
+        </div>
+        <div class="feature-block">
+          <span class="feature-icon">{{ICON:support}}</span>
+          <h3>Ongoing Support</h3>
+          <p>Launch day isn't the finish line — support continues so your site keeps working as your business grows.</p>
         </div>
       </div>
-      <div class="hero-actions fade-in delay-4">
-        <a href="#projects" class="btn-primary">View My Work →</a>
-        <a href="#contact" class="btn-secondary">Get In Touch</a>
-        <a href="Munnawar_Jamil_ATS_CV.docx" download class="btn-cv">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
-          Download CV
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROJECTS
+  ============================================================ -->
+  <section class="section section-alt" id="projects">
+    <div class="container">
+      <div class="section-head">
+        <h2>Selected Projects</h2>
+        <p>A mix of live client websites and complete platforms built for businesses ready to launch.</p>
+      </div>
+
+      <div class="filter-bar" id="filterBar" role="tablist" aria-label="Filter projects">
+        <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-btn" data-filter="design" role="tab" aria-selected="false">Web Design</button>
+        <button class="filter-btn" data-filter="wordpress" role="tab" aria-selected="false">WordPress</button>
+        <button class="filter-btn" data-filter="business" role="tab" aria-selected="false">Business</button>
+        <button class="filter-btn" data-filter="ecommerce" role="tab" aria-selected="false">E-commerce</button>
+        <button class="filter-btn" data-filter="custom" role="tab" aria-selected="false">Custom Solutions</button>
+      </div>
+
+      <div class="project-grid" id="projectGrid"><!-- injected by js/script.js --></div>
+    </div>
+  </section>
+
+  <!-- Project case-study modal (reusable template, filled by script.js) -->
+  <div class="modal-overlay" id="modalOverlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close case study">&times;</button>
+      <div class="modal-body" id="modalBody"><!-- injected --></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       ABOUT
+  ============================================================ -->
+  <section class="section" id="about">
+    <div class="container about-grid">
+      <div class="about-copy">
+        <h2>Building better digital experiences.</h2>
+        <p>MJ WEB CRAFT is a web design, development and digital solutions company helping businesses create modern, responsive and professional digital experiences — from marketing websites to complete booking and management platforms.</p>
+        <p>We work directly with business owners and organizations who need a website that does more than look good: one that builds trust, attracts customers and supports how the business actually operates.</p>
+
+        <div class="founder-card">
+          <div class="founder-avatar" aria-hidden="true">MM</div>
+          <div>
+            <strong>Muhammad Munnawar</strong>
+            <span>Founder &amp; Web Developer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-block">
+          <span class="stat-num" data-count="3" data-suffix="+">0</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-num" data-count="50" data-suffix="+">0</span>
+          <span class="stat-label">Projects / Demos</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-num" data-count="100" data-suffix="%">0</span>
+          <span class="stat-label">Responsive</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-static">24/7</span>
+          <span class="stat-label">Support</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TECHNOLOGIES
+  ============================================================ -->
+  <section class="section section-alt" id="technologies">
+    <div class="container">
+      <div class="section-head">
+        <h2>Technologies we work with</h2>
+        <p>A focused toolkit chosen for reliability, performance and long-term maintainability.</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-chip">WordPress</div>
+        <div class="tech-chip">WooCommerce</div>
+        <div class="tech-chip">Elementor</div>
+        <div class="tech-chip">HTML</div>
+        <div class="tech-chip">CSS</div>
+        <div class="tech-chip">JavaScript</div>
+        <div class="tech-chip">PHP</div>
+        <div class="tech-chip">MySQL</div>
+        <div class="tech-chip">Figma</div>
+        <div class="tech-chip">GitHub</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROCESS
+  ============================================================ -->
+  <section class="section" id="process">
+    <div class="container">
+      <div class="section-head">
+        <h2>From idea to launch</h2>
+        <p>A clear, five-step process — so you always know what's happening and what's next.</p>
+      </div>
+
+      <ol class="process-list">
+        <li class="process-step">
+          <span class="process-num">01</span>
+          <div>
+            <h3>Discover</h3>
+            <p>Understand the business, audience and goals before a single pixel is designed.</p>
+          </div>
+        </li>
+        <li class="process-step">
+          <span class="process-num">02</span>
+          <div>
+            <h3>Plan</h3>
+            <p>Map the website structure, content and user journey around what visitors need to do.</p>
+          </div>
+        </li>
+        <li class="process-step">
+          <span class="process-num">03</span>
+          <div>
+            <h3>Design</h3>
+            <p>Create a modern, responsive visual experience aligned with your brand.</p>
+          </div>
+        </li>
+        <li class="process-step">
+          <span class="process-num">04</span>
+          <div>
+            <h3>Develop</h3>
+            <p>Build the website using clean, optimized and maintainable development practices.</p>
+          </div>
+        </li>
+        <li class="process-step">
+          <span class="process-num">05</span>
+          <div>
+            <h3>Launch &amp; Support</h3>
+            <p>Test thoroughly, launch with confidence, and continue supporting the site afterward.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIALS
+  ============================================================ -->
+  <section class="section section-alt" id="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <h2>What clients say</h2>
+        <p>Placeholder testimonials — replace with real client feedback as projects launch.</p>
+      </div>
+
+      <div class="card-grid testimonial-grid" id="testimonialGrid"><!-- injected by js/script.js --></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA
+  ============================================================ -->
+  <section class="cta-section">
+    <div class="container cta-inner">
+      <h2>Ready to build something better?</h2>
+      <p>Tell us about your business, your goals and the digital experience you want to create.</p>
+      <div class="cta-actions">
+        <a href="#contact" class="btn btn-primary">Start Your Project</a>
+        <a href="https://wa.me/923118963122" target="_blank" rel="noopener" class="btn btn-whatsapp">
+          <span class="wa-icon" aria-hidden="true">{{ICON:whatsapp}}</span> WhatsApp Us
         </a>
       </div>
     </div>
-    <div class="fade-in delay-3">
-      <div class="hero-card">
-        <img src="img/profile.jpeg" class="hero-photo" alt="Munnawar Jamil">
-        <div class="hero-card-name">Munnawar Jamil</div>
-        <div class="hero-card-role">Senior WordPress Developer</div>
-        <div class="hero-card-skills">
-          <span class="skill-chip hot">WordPress</span>
-          <span class="skill-chip hot">WooCommerce</span>
-          <span class="skill-chip hot">Elementor Pro</span>
-          <span class="skill-chip hot">Webflow</span>
-          <span class="skill-chip">Figma → WP</span>
-          <span class="skill-chip">GoHighLevel</span>
-          <span class="skill-chip">CRM Automation</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- STATS BAND -->
-<div class="stats-band">
-  <div class="stats-band-inner">
-    <div class="band-stat"><div class="band-stat-num">70+</div><div class="band-stat-label">Projects Delivered</div></div>
-    <div class="band-stat"><div class="band-stat-num">4+</div><div class="band-stat-label">Years Experience</div></div>
-    <div class="band-stat"><div class="band-stat-num">4</div><div class="band-stat-label">Companies</div></div>
-    <div class="band-stat"><div class="band-stat-num">🇺🇸🇬🇧</div><div class="band-stat-label">US & UK Clients</div></div>
-  </div>
-</div>
+  <!-- ============================================================
+       CONTACT
+  ============================================================ -->
+  <section class="section" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-intro">
+        <h2>Let's talk about your project.</h2>
+        <p>Fill in the details and we'll get back to you — or reach out directly on WhatsApp for a faster response.</p>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-inner">
-    <div class="section-label">What I Work With</div>
-    <h2>Skills & Expertise</h2>
-    <p class="section-desc">Full-stack WordPress development — from pixel-perfect design conversion to performance optimization and automation.</p>
-    <div class="skills-grid">
-      <div class="skill-card"><div class="skill-icon">🔷</div><div class="skill-name">WordPress</div><div class="skill-level">Expert · 4+ Years</div></div>
-      <div class="skill-card"><div class="skill-icon">🛒</div><div class="skill-name">WooCommerce</div><div class="skill-level">Expert · E-commerce Builds</div></div>
-      <div class="skill-card"><div class="skill-icon">⚡</div><div class="skill-name">Elementor Pro</div><div class="skill-level">Expert · Custom Layouts</div></div>
-      <div class="skill-card"><div class="skill-icon">🌊</div><div class="skill-name">Webflow</div><div class="skill-level">Advanced · Landing Pages & Funnels</div></div>
-      <div class="skill-card"><div class="skill-icon">🎨</div><div class="skill-name">Figma → WordPress</div><div class="skill-level">Advanced · Pixel-Perfect</div></div>
-      <div class="skill-card"><div class="skill-icon">🖌️</div><div class="skill-name">Adobe XD → WordPress</div><div class="skill-level">Advanced · Design Systems</div></div>
-      <div class="skill-card"><div class="skill-icon">🧩</div><div class="skill-name">Advanced Custom Fields</div><div class="skill-level">Advanced · Dynamic Content</div></div>
-      <div class="skill-card"><div class="skill-icon">🔌</div><div class="skill-name">Plugin Customization</div><div class="skill-level">Advanced · Custom Hooks</div></div>
-      <div class="skill-card"><div class="skill-icon">🎨</div><div class="skill-name">Theme Development</div><div class="skill-level">Advanced · Child Themes</div></div>
-      <div class="skill-card"><div class="skill-icon">🚀</div><div class="skill-name">Performance Optimization</div><div class="skill-level">Advanced · WP Rocket & Core Web Vitals</div></div>
-      <div class="skill-card"><div class="skill-icon">🛡️</div><div class="skill-name">Security & SEO</div><div class="skill-level">Advanced · Wordfence & Yoast</div></div>
-      <div class="skill-card"><div class="skill-icon">🌐</div><div class="skill-name">Hosting & DNS</div><div class="skill-level">Advanced · cPanel & Migrations</div></div>
-      <div class="skill-card"><div class="skill-icon">📊</div><div class="skill-name">GoHighLevel</div><div class="skill-level">Proficient · CRM & Funnels</div></div>
-      <div class="skill-card"><div class="skill-icon">🤖</div><div class="skill-name">CRM Automation</div><div class="skill-level">Proficient · Client Campaigns</div></div>
-      <div class="skill-card"><div class="skill-icon">💻</div><div class="skill-name">HTML5, CSS3 & JS</div><div class="skill-level">Proficient · Bootstrap & Basic PHP</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-inner">
-    <div class="section-label">Work History</div>
-    <h2>Experience</h2>
-    <p class="section-desc">Professional experience building real products for real clients, across agencies and remote roles.</p>
-    <div class="exp-timeline">
-      <div class="exp-item">
-        <div class="exp-date">2023 – Present</div>
-        <div class="exp-dot"></div>
-        <div class="exp-content">
-          <div class="exp-company">Tag The Alpha Group</div>
-          <div class="exp-role">Senior WordPress Developer</div>
-          <div class="exp-desc">Lead development of responsive WordPress websites using Elementor Pro. Convert Figma & Adobe XD designs into fully functional WordPress websites. Build WooCommerce stores with custom functionality and payment integrations, optimize performance with WP Rocket & Cloudflare, and implement Yoast SEO and Wordfence Security across client sites.</div>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-date">2022 – 2023</div>
-        <div class="exp-dot"></div>
-        <div class="exp-content">
-          <div class="exp-company">Carpe Diem</div>
-          <div class="exp-role">GoHighLevel Associate & WordPress/Webflow Developer (Remote)</div>
-          <div class="exp-desc">Managed client campaigns and CRM automation remotely using GoHighLevel. Designed and developed landing pages and sales funnels in Webflow, converting Figma designs into responsive builds. Built and maintained WordPress websites, and connected domains, DNS records, forms, and email marketing integrations.</div>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-date">2021 – 2022</div>
-        <div class="exp-dot"></div>
-        <div class="exp-content">
-          <div class="exp-company">DigiHive</div>
-          <div class="exp-role">Associate WordPress Developer</div>
-          <div class="exp-desc">Built responsive WordPress websites using Elementor. Integrated forms, animations, sliders, and dynamic content. Optimized websites for performance and SEO.</div>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-date">2021</div>
-        <div class="exp-dot"></div>
-        <div class="exp-content">
-          <div class="exp-company">SkySoft Technologies</div>
-          <div class="exp-role">WordPress Developer Intern</div>
-          <div class="exp-desc">Developed WordPress pages using Elementor. Assisted in theme customization using HTML, CSS & basic PHP.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects" style="background: var(--surface);">
-  <div class="section-inner">
-    <div class="section-label">Portfolio</div>
-    <h2>Featured Projects</h2>
-    <p class="section-desc">Live websites I've built — real clients, real results. Each project tailored to the client's business goals.</p>
-
-    <div class="cat-tabs">
-      <div class="cat-tab active">All</div>
-      <div class="cat-tab">E-commerce</div>
-      <div class="cat-tab">Corporate</div>
-      <div class="cat-tab">Publishing</div>
-      <div class="cat-tab">Services</div>
-    </div>
-
-    <!-- FEATURED -->
-    <div style="margin-bottom:2rem;">
-      <div class="featured-badge">
-        <span class="featured-label">★ Featured Work</span>
-        <span class="featured-sub">Highlighted projects</span>
-      </div>
-      <div class="featured-grid">
-        <div class="project-card" style="border-color:rgba(127,255,106,0.3);">
-          <div class="project-img grad-green">🛒<div class="project-img-label">E-commerce · Featured</div></div>
-          <div class="project-body">
-            <div class="project-cat" style="color:var(--accent);">WooCommerce Store</div>
-            <div class="project-title">Ecom Seller Ease</div>
-            <div class="project-desc">Full-featured e-commerce platform built on WooCommerce. Custom product pages, streamlined checkout, and seller management tools — designed for high conversion.</div>
-            <div class="project-tags"><span class="project-tag">WooCommerce</span><span class="project-tag">Elementor Pro</span><span class="project-tag">Custom Theme</span></div>
-            <a href="https://ecomsellerease.com/" target="_blank" class="project-link">View Live Site →</a>
+        <div class="contact-detail">
+          <span class="contact-icon">{{ICON:whatsapp}}</span>
+          <div>
+            <strong>WhatsApp</strong>
+            <a href="https://wa.me/923118963122" target="_blank" rel="noopener">+92 311 896 3122</a>
           </div>
         </div>
-        <div class="project-card" style="border-color:rgba(127,255,106,0.3);">
-          <div class="project-img grad-teal">✍️<div class="project-img-label">Publishing · Featured</div></div>
-          <div class="project-body">
-            <div class="project-cat" style="color:var(--accent);">Publishing · US Client</div>
-            <div class="project-title">Authors Byline Publishing</div>
-            <div class="project-desc">Professional book publishing services website for a US-based client. Service packages, author testimonials, and lead capture funnels built to convert.</div>
-            <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">US Client</span></div>
-            <a href="https://authorsbylinepublishing.com/" target="_blank" class="project-link">View Live Site →</a>
+        <div class="contact-detail">
+          <span class="contact-icon">{{ICON:mail}}</span>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:munnawarjamil4@gmail.com">munnawarjamil4@gmail.com</a>
           </div>
         </div>
-        <div class="project-card" style="border-color:rgba(127,255,106,0.3);">
-          <div class="project-img grad-gold">📖<div class="project-img-label">Publishing · Featured</div></div>
-          <div class="project-body">
-            <div class="project-cat" style="color:var(--accent);">Publishing · Media</div>
-            <div class="project-title">Bridge Publisher</div>
-            <div class="project-desc">Book publishing and media company website with custom editorial design. Services, manuscript submission forms, and author-focused content on clean layouts.</div>
-            <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Custom Theme</span><span class="project-tag">Publishing</span></div>
-            <a href="https://bridgepublisher.com/" target="_blank" class="project-link">View Live Site →</a>
-          </div>
-        </div>
+
+        <a href="https://wa.me/923118963122" target="_blank" rel="noopener" class="btn btn-whatsapp btn-block">
+          <span class="wa-icon" aria-hidden="true">{{ICON:whatsapp}}</span> Chat on WhatsApp
+        </a>
       </div>
+
+      <form class="contact-form" id="contactForm" novalidate
+            data-note="Frontend-only form for the GitHub Pages version. Wire the onSubmit handler in js/script.js to WordPress/PHP (wp_mail or admin-post.php) or a form service (Formspree, Getform) after migration.">
+
+        <div class="form-row">
+          <label for="f-name">Name</label>
+          <input type="text" id="f-name" name="name" required autocomplete="name">
+        </div>
+
+        <div class="form-row">
+          <label for="f-email">Email</label>
+          <input type="email" id="f-email" name="email" required autocomplete="email">
+        </div>
+
+        <div class="form-row">
+          <label for="f-phone">Phone / WhatsApp</label>
+          <input type="tel" id="f-phone" name="phone" required autocomplete="tel">
+        </div>
+
+        <div class="form-row">
+          <label for="f-business">Business Name</label>
+          <input type="text" id="f-business" name="business" autocomplete="organization">
+        </div>
+
+        <div class="form-row">
+          <label for="f-service">Service Required</label>
+          <select id="f-service" name="service" required>
+            <option value="" disabled selected>Select a service</option>
+            <option>Web Development</option>
+            <option>Web Design</option>
+            <option>WordPress</option>
+            <option>E-commerce</option>
+            <option>Website Redesign</option>
+            <option>Custom Solution</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="f-budget">Budget Range</label>
+          <select id="f-budget" name="budget" required>
+            <option value="" disabled selected>Select a budget range</option>
+            <option>Under PKR 30,000</option>
+            <option>PKR 30,000 – 50,000</option>
+            <option>PKR 50,000 – 100,000</option>
+            <option>PKR 100,000+</option>
+            <option>Discuss With Us</option>
+          </select>
+        </div>
+
+        <div class="form-row form-row-full">
+          <label for="f-details">Project Details</label>
+          <textarea id="f-details" name="details" rows="4" required></textarea>
+        </div>
+
+        <div class="form-row form-row-full">
+          <button type="submit" class="btn btn-primary btn-block">Send Project Details</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <span class="brand-name">MJ WEB CRAFT</span>
+      <span class="brand-tagline">Web Design &amp; Development</span>
+      <p>Building digital experiences that grow businesses.</p>
     </div>
 
-    <div style="border-top:1px solid var(--border);padding-top:2rem;margin-bottom:1.75rem;">
-      <p style="color:var(--muted);font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;">More Projects</p>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
     </div>
 
-    <div class="projects-grid">
-      <!-- E-commerce -->
-      <div class="project-card">
-        <div class="project-img grad-green">🛍️<div class="project-img-label">E-commerce</div></div>
-        <div class="project-body">
-          <div class="project-cat">WooCommerce Store</div>
-          <div class="project-title">Your Smart Stores</div>
-          <div class="project-desc">Full WooCommerce store with product catalog, cart, and checkout. Custom theme built for conversion — fast loading and mobile-first.</div>
-          <div class="project-tags"><span class="project-tag">WooCommerce</span><span class="project-tag">Elementor Pro</span></div>
-          <a href="https://yoursmartstores.com/" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img grad-teal">🛒<div class="project-img-label">E-commerce</div></div>
-        <div class="project-body">
-          <div class="project-cat">E-commerce · US Client</div>
-          <div class="project-title">Seller Merce</div>
-          <div class="project-desc">E-commerce brand website with product showcase, conversion-focused landing pages, and custom WooCommerce integration.</div>
-          <div class="project-tags"><span class="project-tag">WooCommerce</span><span class="project-tag">WordPress</span><span class="project-tag">US Client</span></div>
-          <a href="https://sellermerce.com/" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img grad-blue">📦<div class="project-img-label">E-commerce</div></div>
-        <div class="project-body">
-          <div class="project-cat">E-commerce · US Client</div>
-          <div class="project-title">Content Center LLC</div>
-          <div class="project-desc">Business services platform with professional layout, service sections, and client-focused lead generation for US market.</div>
-          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">US Client</span></div>
-          <a href="https://www.contentcenterllc.com/" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img grad-green">⚡<div class="project-img-label">E-commerce</div></div>
-        <div class="project-body">
-          <div class="project-cat">E-commerce · Electronics</div>
-          <div class="project-title">Ameer Electronics</div>
-          <div class="project-desc">Electronics retail store with WooCommerce product catalog, category filtering, and streamlined checkout experience.</div>
-          <div class="project-tags"><span class="project-tag">WooCommerce</span><span class="project-tag">WordPress</span><span class="project-tag">Custom Theme</span></div>
-          <a href="https://ameerelectronics.com/" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img grad-teal">👗<div class="project-img-label">E-commerce</div></div>
-        <div class="project-body">
-          <div class="project-cat">Fashion · E-commerce</div>
-          <div class="project-title">Eutopia Trend</div>
-          <div class="project-desc">Fashion brand WooCommerce store with elegant product displays, lookbook sections, and a modern shopping experience.</div>
-          <div class="project-tags"><span class="project-tag">WooCommerce</span><span class="project-tag">Elementor Pro</span><span class="project-tag">Fashion</span></div>
-          <a href="https://eutopiatrend.com/" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img grad-gold">💎<div class="project-img-label">E-commerce</div></div>
-        <div class="project-body">
-          <div class="project-cat">Luxury · Stone Products</div>
-          <div class="project-title">Prestigious Stone</div>
-          <div class="project-desc">Luxury stone and marble products website with premium design aesthetic, portfolio gallery, and inquiry forms.</div>
-          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">Luxury</span></div>
-          <a href="https://prestigiousstone.com/" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img grad-rose">🛏️<div class="project-img-label">E-commerce</div></div>
-        <div class="project-body">
-          <div class="project-cat">WooCommerce Store</div>
-          <div class="project-title">Queens Linen</div>
-          <div class="project-desc">Home textiles WooCommerce store with structured product management, category organization, and performance optimization for faster load times.</div>
-          <div class="project-tags"><span class="project-tag">WooCommerce</span><span class="project-tag">Product Management</span><span class="project-tag">Performance Optimization</span></div>
-        </div>
-      </div>
-
-      <!-- Corporate -->
-      <div class="project-card">
-        <div class="project-img grad-blue">🏢<div class="project-img-label">Corporate</div></div>
-        <div class="project-body">
-          <div class="project-cat">Corporate · Ventures</div>
-          <div class="project-title">Vertez Ventures LLC</div>
-          <div class="project-desc">Corporate ventures firm website with clean professional design, services sections, team pages, and business-focused lead capture.</div>
-          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Figma → WP</span><span class="project-tag">Corporate</span></div>
-          <a href="https://vertezventuresllc.com/" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img grad-teal">🏢<div class="project-img-label">Corporate</div></div>
-        <div class="project-body">
-          <div class="project-cat">Corporate · Agency</div>
-          <div class="project-title">DigiHive</div>
-          <div class="project-desc">Full digital agency website with services pages, portfolio showcase, and lead capture. Built with Elementor Pro and custom WordPress theme.</div>
-          <div class="project-tags"><span class="project-tag">Elementor Pro</span><span class="project-tag">Custom Theme</span><span class="project-tag">Agency</span></div>
-          <a href="https://digihive.com.pk" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img grad-slate">🌍<div class="project-img-label">Corporate · US Client</div></div>
-        <div class="project-body">
-          <div class="project-cat">Corporate · US Client</div>
-          <div class="project-title">Corporate Ecom Solutions</div>
-          <div class="project-desc">B2B e-commerce solutions company website with corporate branding, service offerings, and professional contact flow.</div>
-          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">US Client</span></div>
-          <a href="https://corporateecomsolutions.com/" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img grad-blue">📊<div class="project-img-label">Corporate · US Client</div></div>
-        <div class="project-body">
-          <div class="project-cat">E-commerce · Consulting</div>
-          <div class="project-title">Agile Ecomm</div>
-          <div class="project-desc">E-commerce consultancy website for a US-based agency with service listings, case studies, and client-facing landing pages.</div>
-          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">US Client</span></div>
-          <a href="https://agileecomm.com/" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img grad-green">🛒<div class="project-img-label">E-commerce · US Client</div></div>
-        <div class="project-body">
-          <div class="project-cat">E-commerce · Community</div>
-          <div class="project-title">The Ecoms Mers</div>
-          <div class="project-desc">E-commerce community and brand website with custom page designs, membership sections, and engaging content layout.</div>
-          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">WooCommerce</span><span class="project-tag">US Client</span></div>
-          <a href="https://theecomsmers.com/" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-      <!-- Personal Brands -->
-      <div class="project-card">
-        <div class="project-img grad-rose">👤<div class="project-img-label">Personal Brand · US Client</div></div>
-        <div class="project-body">
-          <div class="project-cat">Personal Brand · US Client</div>
-          <div class="project-title">Don P. Valeri</div>
-          <div class="project-desc">Author and personal brand website for US client Don Valeri. Clean, professional layout with blog, book showcase, and bio sections.</div>
-          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">Personal Brand</span></div>
-          <a href="https://donpvaleri.com/" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img grad-slate">⚔️<div class="project-img-label">Personal Brand · US Client</div></div>
-        <div class="project-body">
-          <div class="project-cat">Personal Brand · US Client</div>
-          <div class="project-title">Making America Chivalrous Again</div>
-          <div class="project-desc">Niche personal brand website with blog and community-focused content, built for US client with engaging editorial layout.</div>
-          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">US Client</span></div>
-          <a href="https://makingamericachivalrousagain.com/" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img grad-blue">🏗️<div class="project-img-label">Personal Brand · US Client</div></div>
-        <div class="project-body">
-          <div class="project-cat">Personal Brand · US Client</div>
-          <div class="project-title">Drew Hamilton Enterprises</div>
-          <div class="project-desc">Entrepreneurial brand and consulting website for US client with professional services layout and conversion-focused design.</div>
-          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Custom Theme</span><span class="project-tag">US Client</span></div>
-          <a href="https://drewhamiltonenterprises.com/" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img grad-rose">👤<div class="project-img-label">Personal Brand · US Client</div></div>
-        <div class="project-body">
-          <div class="project-cat">Personal Brand · Author</div>
-          <div class="project-title">Michel Shehadeh</div>
-          <div class="project-desc">Author personal brand website with book listings, speaking info, media features, and professional biography sections.</div>
-          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">Author</span></div>
-          <a href="https://michelshehadeh.com/" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img grad-teal">👩‍💼<div class="project-img-label">Personal Brand · US Client</div></div>
-        <div class="project-body">
-          <div class="project-cat">Personal Brand · Consultant</div>
-          <div class="project-title">Daniela McMahon</div>
-          <div class="project-desc">Professional consultant personal brand website with services, testimonials, contact forms, and clean modern layout.</div>
-          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">Consulting</span></div>
-          <a href="https://danielamcmahon.com/" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-      <!-- Publishing -->
-      <div class="project-card">
-        <div class="project-img grad-gold">📚<div class="project-img-label">Publishing · US Client</div></div>
-        <div class="project-body">
-          <div class="project-cat">Publishing · US Client</div>
-          <div class="project-title">McMillan Book Writing</div>
-          <div class="project-desc">Book writing & publishing services website for US-based client. Custom landing pages, service packages, and inquiry funnels built to convert.</div>
-          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">US Client</span><span class="project-tag">Lead Gen</span></div>
-          <a href="https://mcmillanbookwriting.com" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img grad-slate">📕<div class="project-img-label">Publishing · US Client</div></div>
-        <div class="project-body">
-          <div class="project-cat">Publishing · US Client</div>
-          <div class="project-title">US Book Publishers</div>
-          <div class="project-desc">Publishing services website for a US-based client with custom pages, service breakdowns, and a fully responsive layout.</div>
-          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Custom Pages</span><span class="project-tag">US Client</span></div>
-        </div>
-      </div>
-
-      <!-- Services -->
-      <div class="project-card">
-        <div class="project-img grad-rose">✈️<div class="project-img-label">Services · Travel</div></div>
-        <div class="project-body">
-          <div class="project-cat">Travel & Tours</div>
-          <div class="project-title">ROD Travel & Tours</div>
-          <div class="project-desc">Travel agency website with tour packages, booking forms, and destination galleries. Fully responsive with custom Elementor layouts.</div>
-          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Elementor Pro</span><span class="project-tag">Booking</span></div>
-          <a href="https://rodtravelandtours.pk" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
-
-       <div class="project-card">
-        <div class="project-img grad-blue">🏥<div class="project-img-label">Services · Healthcare</div></div>
-        <div class="project-body">
-          <div class="project-cat">Medical / Healthcare</div>
-          <div class="project-title">Complete Medical PK</div>
-          <div class="project-desc">Healthcare services website with doctor profiles, service pages, and appointment booking integration.</div>
-          <div class="project-tags"><span class="project-tag">WordPress</span><span class="project-tag">Custom Theme</span><span class="project-tag">Healthcare</span></div>
-          <a href="https://completemedical.pk" target="_blank" class="project-link">View Live Site →</a>
-        </div>
-      </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">Web Development</a>
+      <a href="#services">Web Design</a>
+      <a href="#services">WordPress</a>
+      <a href="#services">E-commerce</a>
+      <a href="#services">Custom Solutions</a>
     </div>
 
-    <div class="more-projects">
-      Showing <strong>24 projects</strong> from my portfolio of <strong>70+</strong> live websites — more available on request.
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="https://wa.me/923118963122" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="mailto:munnawarjamil4@gmail.com">Email</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Social</h4>
+      <a href="https://github.com/munnawarjamil4-connect" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/munnawar-jamil/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#" target="_blank" rel="noopener">Facebook</a>
+      <a href="#" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-inner">
-    <div class="contact-grid">
-      <div class="contact-info">
-        <div class="section-label">Let's Work Together</div>
-        <h2>Got a Project in Mind?</h2>
-        <p>Whether you need a WooCommerce store, a custom WordPress site from Figma designs, or performance optimization — let's talk. Available for freelance projects and full-time roles.</p>
-        <div style="display:flex;flex-direction:column;gap:0.85rem;">
-          <a href="https://mail.google.com/mail/?view=cm&to=munnawarjamil4@gmail.com" target="_blank" class="contact-link">
-            <span class="contact-link-icon">📧</span>
-            <div><div class="contact-link-label">Email</div><div class="contact-link-val">munnawarjamil4@gmail.com</div></div>
-          </a>
-          <a href="tel:+923118963122" class="contact-link">
-            <span class="contact-link-icon">📞</span>
-            <div><div class="contact-link-label">Phone / WhatsApp</div><div class="contact-link-val">+92 311 896 3122</div></div>
-          </a>
-          <a href="https://www.linkedin.com/in/munnawar-jamil/" target="_blank" class="contact-link">
-            <span class="contact-link-icon">🔗</span>
-            <div><div class="contact-link-label">LinkedIn</div><div class="contact-link-val">munnawar-jamil</div></div>
-          </a>
-        </div>
-      </div>
-      <div>
-        <div class="contact-card">
-          <p style="color:var(--muted);font-size:0.88rem;line-height:1.7;">Reach out directly — I typically respond within 24 hours. Available for freelance projects, full-time roles, and consultations.</p>
-          <a href="https://mail.google.com/mail/?view=cm&to=munnawarjamil4@gmail.com" target="_blank" class="contact-link">
-            <span class="contact-link-icon">📧</span>
-            <div><div class="contact-link-label">Email</div><div class="contact-link-val">munnawarjamil4@gmail.com</div></div>
-          </a>
-          <a href="https://wa.me/923118963122" target="_blank" class="contact-link">
-            <span class="contact-link-icon">💬</span>
-            <div><div class="contact-link-label">WhatsApp</div><div class="contact-link-val">+92 311 896 3122</div></div>
-          </a>
-          <a href="https://www.linkedin.com/in/munnawar-jamil/" target="_blank" class="contact-link">
-            <span class="contact-link-icon">🔗</span>
-            <div><div class="contact-link-label">LinkedIn</div><div class="contact-link-val">munnawar-jamil</div></div>
-          </a>
-          <div class="contact-note">💼 Open to freelance & full-time · 🕐 Response within 24h · 🌍 Remote worldwide</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-inner">
-    <span>© 2026 <strong style="color:var(--text);">Munnawar Jamil</strong> — WordPress Developer</span>
-    <span>Built with care · <a href="https://mail.google.com/mail/?view=cm&to=munnawarjamil4@gmail.com" target="_blank">munnawarjamil4@gmail.com</a></span>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 MJ WEBCRAFT. All Rights Reserved.</p>
   </div>
 </footer>
 
-<script>
-  // Category tabs
-  document.querySelectorAll('.cat-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-    });
-  });
-</script>
+<script src="js/script.js"></script>
 </body>
 </html>
