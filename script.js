@@ -157,6 +157,118 @@ const PROJECTS = [
     solution: 'Built a custom WordPress theme with doctor profiles, service pages and an appointment booking integration.',
     features: ['Doctor profiles', 'Service pages', 'Appointment booking integration'],
   },
+  {
+    id: 'seller-merce',
+    name: 'Seller Merce',
+    industry: 'E-commerce Services',
+    cats: ['ecommerce', 'business', 'wordpress'],
+    status: 'live',
+    url: 'https://sellermerce.com/',
+    description: 'A done-for-you e-commerce agency site presenting Amazon, Walmart and Shopify store setup and management services to new and scaling sellers.',
+    services: ['WordPress', 'Web Design'],
+    tech: ['WordPress', 'Elementor Pro'],
+    challenge: 'The agency needed a site that could explain a fairly technical, multi-platform service clearly enough to convert first-time sellers.',
+    solution: 'Built clear service breakdowns and trust-building sections so visitors understand what the done-for-you service includes before they inquire.',
+    features: ['Service breakdown by platform (Amazon / Walmart / Shopify)', 'Trust & credibility sections', 'Lead capture forms'],
+  },
+  {
+    id: 'prestigious-stone',
+    name: 'Prestigious Stone',
+    industry: 'Natural Stone / Building Materials',
+    cats: ['business', 'design', 'wordpress'],
+    status: 'live',
+    url: 'https://prestigiousstone.com/',
+    description: 'A business website for a natural stone supplier, presenting stone products and materials to trade and retail buyers.',
+    services: ['WordPress', 'Web Design'],
+    tech: ['WordPress', 'Elementor Pro'],
+    challenge: 'Stone and material products need to be presented visually, since buyers judge quality largely by appearance and finish.',
+    solution: 'Built an image-forward layout with clear product categories so buyers can browse materials before making contact.',
+    features: ['Visual product categories', 'Business contact & inquiry flow'],
+  },
+  {
+    id: 'queens-linen',
+    name: 'Queens Linen',
+    industry: 'Textiles / Retail',
+    cats: ['ecommerce', 'business', 'wordpress'],
+    status: 'live',
+    url: 'https://queenslinen.com/',
+    description: 'A retail website for a linen and textile business, presenting product lines to wholesale and retail customers.',
+    services: ['WordPress', 'Web Design'],
+    tech: ['WordPress', 'WooCommerce'],
+    challenge: 'The client needed a clean, catalog-style presentation for textile products spanning multiple product lines.',
+    solution: 'Built organized product categories with a straightforward browsing experience suited to both retail and bulk buyers.',
+    features: ['Product catalog by category', 'Responsive product browsing'],
+  },
+  {
+    id: 'ameer-electronics',
+    name: 'Ameer Electronics',
+    industry: 'Electronics Retail',
+    cats: ['ecommerce', 'business'],
+    status: 'live',
+    url: 'https://ameerelectronics.com/',
+    description: 'An electronics retail website presenting product categories and store information to local customers.',
+    services: ['Web Development', 'Web Design'],
+    tech: ['WordPress', 'WooCommerce'],
+    challenge: 'The store needed an online presence that matched its physical retail catalog and made it easy for customers to browse categories.',
+    solution: 'Built a categorized electronics catalog with clear store and contact information.',
+    features: ['Category-based product browsing', 'Store contact information'],
+  },
+  {
+    id: 'british-assignment-writing',
+    name: 'British Assignment Writing',
+    industry: 'Academic Services',
+    cats: ['business', 'wordpress', 'custom'],
+    status: 'live',
+    url: 'https://britishassignmentwriting.com/',
+    description: 'A service website for an academic writing business, presenting service packages and ordering information to students.',
+    services: ['WordPress', 'Web Design'],
+    tech: ['WordPress', 'Elementor Pro'],
+    challenge: 'Academic service sites need to establish trust quickly, since visitors are deciding whether to pay for a service sight-unseen.',
+    solution: 'Built clear service packages and an inquiry flow designed to reduce visitor hesitation and answer key questions upfront.',
+    features: ['Service package pages', 'Order / inquiry flow', 'Trust & guarantee sections'],
+  },
+  {
+    id: 'digihive',
+    name: 'DigiHive',
+    industry: 'Digital Agency',
+    cats: ['business', 'wordpress', 'design'],
+    status: 'live',
+    url: 'https://digihive.com.pk/',
+    description: 'A digital agency website presenting web, marketing and design services to local and international clients.',
+    services: ['WordPress', 'Web Design'],
+    tech: ['WordPress', 'Elementor Pro'],
+    challenge: 'As an agency site, it needed to demonstrate credibility and range of services at a glance.',
+    solution: 'Built a service-led homepage structure with clear categories so visitors can quickly find the service they need.',
+    features: ['Service category pages', 'Agency portfolio presentation'],
+  },
+  {
+    id: 'mj-auto-solution',
+    name: 'MJ Auto Solution',
+    industry: 'Automotive Services',
+    cats: ['business', 'wordpress'],
+    status: 'live',
+    url: 'https://mjautosolution.com/',
+    description: 'A business website for an automotive services company, presenting services and contact information to customers.',
+    services: ['WordPress', 'Web Design'],
+    tech: ['WordPress', 'Elementor Pro'],
+    challenge: 'The business needed a straightforward, credible web presence customers could use to find services and get in touch.',
+    solution: 'Built a clean services-and-contact structure suited to a local service business.',
+    features: ['Service listings', 'Contact & inquiry section'],
+  },
+  {
+    id: 'bridge-publisher',
+    name: 'Bridge Publisher',
+    industry: 'Publishing Services',
+    cats: ['business', 'wordpress', 'custom'],
+    status: 'live',
+    url: 'https://bridgepublisher.com/',
+    description: 'A publishing services website presenting book publishing and author support packages to first-time authors.',
+    services: ['WordPress', 'Web Design'],
+    tech: ['WordPress', 'Elementor Pro'],
+    challenge: 'Publishing service sites compete heavily on trust and clarity, since authors are often unfamiliar with the publishing process.',
+    solution: 'Built clear service packages and a guided structure that explains the publishing process step by step.',
+    features: ['Service package pages', 'Process explanation sections', 'Author-focused lead capture'],
+  },
 ];
 
 const TESTIMONIALS = [
@@ -354,24 +466,27 @@ if ('IntersectionObserver' in window && statNums.length) {
 
 /* -----------------------------------------------------------------------
    7. CONTACT FORM
-   Frontend-only for the GitHub Pages version: on submit, this opens a
-   pre-filled WhatsApp chat with the project details (since WhatsApp is
-   the primary contact channel for this brand) and shows a status message.
+   On submit this does two things:
+   (1) sends the details by email via Formspree (arrives at
+       munnawarjamil4@gmail.com), and
+   (2) opens a pre-filled WhatsApp chat with the same details, since
+       WhatsApp is the primary contact channel for this brand.
+   Either one failing does not block the other — a visitor with WhatsApp
+   blocked (e.g. a popup blocker) still gets their email sent, and if
+   Formspree is ever unreachable, WhatsApp still opens.
 
    WORDPRESS MIGRATION NOTE:
-   Replace the body of handleSubmit() with a fetch() call to a PHP
-   endpoint (e.g. admin-post.php with wp_mail) or a form service such as
-   Formspree / Getform. Keep the field names as-is so the markup does
-   not need to change.
+   Formspree can be swapped for a real WordPress form handler
+   (admin-post.php + wp_mail, or a plugin like WPForms/Fluent Forms) by
+   changing FORM_ENDPOINT below and the form's "action" attribute in
+   index.html. Field names can stay the same.
    ----------------------------------------------------------------------- */
+const FORM_ENDPOINT = 'https://formspree.io/f/mdekzprj';
 const contactFormEl = document.getElementById('contactForm');
 const formStatusEl = document.getElementById('formStatus');
 
-function handleSubmit(e){
-  e.preventDefault();
-  const data = new FormData(contactFormEl);
-  const summary =
-`New project inquiry — MJ WEB CRAFT
+function buildWhatsAppSummary(data){
+  return `New project inquiry — MJ WEB CRAFT
 Name: ${data.get('name')}
 Email: ${data.get('email')}
 Phone: ${data.get('phone')}
@@ -379,11 +494,33 @@ Business: ${data.get('business') || '—'}
 Service: ${data.get('service')}
 Budget: ${data.get('budget')}
 Details: ${data.get('details')}`;
+}
 
-  const whatsappUrl = `https://wa.me/923118963122?text=${encodeURIComponent(summary)}`;
+function handleSubmit(e){
+  e.preventDefault();
+  const data = new FormData(contactFormEl);
+
+  const whatsappUrl = `https://wa.me/923118963122?text=${encodeURIComponent(buildWhatsAppSummary(data))}`;
   window.open(whatsappUrl, '_blank', 'noopener');
 
-  formStatusEl.textContent = "Thanks! We've opened WhatsApp with your project details — send the message to reach us directly.";
+  formStatusEl.textContent = "Sending your details and opening WhatsApp…";
+
+  fetch(FORM_ENDPOINT, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  })
+    .then((response) => {
+      if (response.ok) {
+        formStatusEl.textContent = "Thanks! Your project details have been emailed to us and WhatsApp is open — send that message for the fastest reply.";
+      } else {
+        formStatusEl.textContent = "WhatsApp is open with your details — the email step didn't go through, so please send the WhatsApp message.";
+      }
+    })
+    .catch(() => {
+      formStatusEl.textContent = "WhatsApp is open with your details — the email step didn't go through, so please send the WhatsApp message.";
+    });
+
   contactFormEl.reset();
 }
 
